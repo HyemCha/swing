@@ -1,0 +1,54 @@
+package playGUI;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+
+import javax.swing.*;
+
+public class HelloSwing extends JFrame { // JFrame은 BorderLayout 배치방식(동서남북)을 갖고 태어난 놈
+	
+	public HelloSwing() {
+		this.setTitle("프레임으로 탄생한 HelloSwing 객체");
+//		this.setSize(800, 500);
+//		this.setLocation(600, 300);
+//		Container c = this.getContentPane();
+//		c.setBackground(Color.green);
+		this.setBounds(500, 300, 800, 500);
+		this.setLayout(new FlowLayout()); // 기본 배치방식을 가진 패키지: awt
+		
+		JPanel p1 = new JPanel(); //FlowLayout성격을 가짐
+		p1.setBackground(Color.MAGENTA);
+		this.add(p1);
+		
+		JButton b1 = new JButton("button1");
+		JButton b2 = new JButton("button2");
+		JButton b3 = new JButton("button3");
+		JButton b4 = new JButton("button4");
+		JButton b5 = new JButton("button5");
+		this.add(b1);
+		this.add(b2);
+		this.add(b3);
+		this.add(b4);
+		this.add(b5);
+//		this.add(b1, BorderLayout.NORTH);
+//		this.add(b2);
+//		this.add(b3, BorderLayout.EAST);
+//		this.add(b4, BorderLayout.SOUTH);
+//		this.add(b5, BorderLayout.WEST);
+		// 버튼 같은 것(컴포넌트)들을 담는 애들 => 컨테이너
+		
+		JTextField tf1 = new JTextField(20);
+		this.add(tf1);
+		
+		this.setVisible(true);
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new HelloSwing();
+		
+	}
+
+}

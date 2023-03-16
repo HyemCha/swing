@@ -1,0 +1,74 @@
+package test;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class PhoneManager {
+	
+	
+	static Connection con = DBConnect.makeCon();
+	static PreparedStatement pstmt = null;
+	public static void main(String[] args) throws SQLException {
+		if (con != null) {
+			//insert();
+			select();
+			delete();
+			select();		}
+	}
+	
+	public static void insert() throws SQLException
+	{
+		String sql = "insert into person values(?, ?, ?, ?)";
+		String name = "Gavi";
+		String phone = "010-6666-6666";
+		String email = "Gavi@gmail.com";
+		int age = 20;
+		Scanner s = new Scanner(System.in);
+		name = s.nextLine();
+		phone = s.nextLine();
+		email = s.nextLine();
+		age = s.nextInt();
+		
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, name);
+		pstmt.setString(2, phone);
+		pstmt.setString(3, email);
+		pstmt.setInt(4, age);
+		pstmt.executeUpdate();
+	}
+	
+	public static void select() throws SQLException
+	{
+		ResultSet rs = null;
+		String sql = "select * from person";
+		pstmt = con.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		System.out.println("=========전화번호부========");
+		System.out.println("name\t번호\t\temail\t\tage");
+		while(rs.next()) {
+			System.out.println(rs.getString(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getInt(4));
+		}
+	}
+	
+	public static void delete() throws SQLException
+	{
+		String pn = "";
+		ResultSet rs = null;
+		Scanner s = new Scanner(System.in);
+		String sql = "delete from person where phone=?";
+		String selectSql = "select name from person where phone=?";
+		pstmt = con.prepareStatement(selectSql);
+		System.out.print("전화번호 입력>> ");
+		pn = s.nextLine();
+		pstmt.setString(1, pn);
+		rs = pstmt.executeQuery();
+		if (!rs.next())
+			System.out.println("전화번호 존재x");
+			
+		else {
+			pstmt.setString(1, pn);
+			pstmt.executeUpdate();
+		}
+		
+	}
+}

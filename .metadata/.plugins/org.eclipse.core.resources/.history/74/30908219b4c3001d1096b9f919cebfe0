@@ -1,0 +1,112 @@
+package test;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class PhoneManager {
+	
+	static Scanner s = new Scanner(System.in);
+	static Connection con = DBConnect.makeCon();
+	static PreparedStatement pstmt = null;
+	
+	public static void main(String[] args) throws SQLException {
+		if (con != null) {
+			while (true) {
+				System.out.println("1.조회 2.추가 4.삭제 | 그 외: 중지");
+				System.out.print(">>");
+				String input = s.nextLine();
+				if (input == "1") {
+					select();
+				} else if (input == "2") {
+					insert();
+				} else if (input == "3") {
+					update();
+				} else if (input == "4") {
+					delete();
+				} else {
+					break;
+				}
+			}					
+		}
+	}
+	
+	public static void insert() throws SQLException
+	{
+		String sql = "insert into person values(?, ?, ?, ?)";
+		String name = "Gavi";
+		String phone = "010-6666-6666";
+		String email = "Gavi@gmail.com";
+		int age = 20;
+		
+		name = s.nextLine();
+		phone = s.nextLine();
+		email = s.nextLine();
+		age = s.nextInt();
+		
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, name);
+		pstmt.setString(2, phone);
+		pstmt.setString(3, email);
+		pstmt.setInt(4, age);
+		pstmt.executeUpdate();
+	}
+	
+	public static void select() throws SQLException
+	{
+		ResultSet rs = null;
+		String sql = "select * from person";
+		pstmt = con.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		System.out.println("=========전화번호부========");
+		System.out.println("name\t번호\t\temail\t\tage");
+		while(rs.next()) {
+			System.out.println(rs.getString(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t" + rs.getInt(4));
+		}
+	}
+	
+	public static void delete() throws SQLException
+	{
+		String pn = "";
+		ResultSet rs = null;
+		String sql = "delete from person where phone=?";
+		String selectSql = "select name from person where phone=?";
+		pstmt = con.prepareStatement(selectSql);
+		System.out.print("전화번호 입력>> ");
+		pn = s.nextLine();
+		pstmt.setString(1, pn);
+		rs = pstmt.executeQuery();
+		if (!rs.next())
+			System.out.println("전화번호 존재x");
+			
+		else {
+			String rmname = rs.getString(1);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, pn);
+			pstmt.executeUpdate();
+			System.out.println(rmname + "님의 정보가 삭제되었습니다👌👌");
+		}		
+	}
+	
+	public static void update() throws SQLException {
+		System.out.print("전화번호 입력>>");
+		String key = s.nextLine();
+		
+		ResultSet rs = null;
+		String sql = "select * from person where phone = ?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, key);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			System.out.print("이메일 입력>>");
+			System.out.print("나이 입력>>");
+			String e = s.nextLine();
+			int a = s.nextInt();
+			sql = "update person set email = ?, age = ? where phone = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, e);
+			pstmt.setInt(2, a);
+			pstmt.setString(3, key);
+		}
+	}
+}

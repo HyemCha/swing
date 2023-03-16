@@ -1,0 +1,24 @@
+package playGUI;
+
+import javax.swing.*;
+
+public class HelloSwing extends JFrame {
+	
+	public HelloSwing() {
+		this.setTitle("이몸은 프레임으로 탄생한 HelloSwing 객체");
+		this.setSize(800, 500);
+		this.setLocation(600, 300);
+		
+		this.setBackground(Color.green);
+		
+		this.setVisible(true);
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new HelloSwing();
+		
+	}
+
+}
