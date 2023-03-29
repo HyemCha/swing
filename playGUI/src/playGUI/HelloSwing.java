@@ -74,13 +74,13 @@ public class HelloSwing extends JFrame implements ActionListener { // JFrame은 
         p2.add(myName);
 
         myPhone = new JTextField(10);
-        p2.add(myName);
+        p2.add(myPhone);
 
         myEmail = new JTextField(10);
-        p2.add(myName);
+        p2.add(myEmail);
 
         myAge = new JTextField(10);
-        p2.add(myName);
+        p2.add(myAge);
 
 
         this.setVisible(true);
