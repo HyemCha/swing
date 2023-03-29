@@ -4,13 +4,35 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class HelloSwingView extends JFrame {
-    private JTextField tf1, myName, myPhone, myEmail, myAge;
+public class HelloSwingView extends JFrame{
+    private JTextField  myName, myPhone, myEmail, myAge;
     private JTable table;
     private JButton b1, b2, b3, b4, b5, b6, b7;
     private JPanel p1, p2;
     private JScrollPane p3;
+
+    public JTextField getMyName() {
+        return myName;
+    }
+
+    public JTable getTable() {
+        return table;
+    }
+
+    public JTextField getMyPhone() {
+        return myPhone;
+    }
+
+    public JTextField getMyEmail() {
+        return myEmail;
+    }
+
+    public JTextField getMyAge() {
+        return myAge;
+    }
 
     public DefaultTableModel getDtm() {
         return dtm;
@@ -83,5 +105,17 @@ public class HelloSwingView extends JFrame {
         b5.addActionListener(listener);
         b6.addActionListener(listener);
         b7.addActionListener(listener);
+    }
+
+    public void addMouseListener(MouseListener listener) {
+        table.addMouseListener(listener);
+    }
+
+    public void addField(){
+
+    }
+
+    public void removeField() {
+
     }
 }

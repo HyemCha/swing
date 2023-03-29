@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 public class HelloSwingModel {
 
-    private List<Member> list = new ArrayList<>();
-    private Member member = new Member();
+    private List<Member> list = null;
+    private Member member = null;
     Scanner s = new Scanner(System.in);
     static Connection con = null;
     static PreparedStatement pstmt = null;
@@ -28,28 +28,83 @@ public class HelloSwingModel {
     public List<Member> select() throws SQLException {
         String sql = "select * from person";
 
+        list = new ArrayList<>();
+
         pstmt = con.prepareStatement(sql);
         rs = pstmt.executeQuery();
 
         while (rs.next()) {
+            member = new Member();
             member.setName(rs.getString(1));
             member.setPh(rs.getString(2));
             member.setEmail(rs.getString(3));
             member.setAge(rs.getInt(4));
             list.add(member);
-
-            System.out.println("model: " + member.getName());
         }
 
         return list;
     }
 
-    public ResultSet search(String name) throws SQLException {
+    public List<Member> search(String name) throws SQLException {
         String sql = "select * from person where name = ?";
+
+        list = new ArrayList<>();
 
         pstmt = con.prepareStatement(sql);
         pstmt.setString(1, name);
-        return rs;
+        rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            member = new Member();
+            member.setName(rs.getString(1));
+            member.setPh(rs.getString(2));
+            member.setEmail(rs.getString(3));
+            member.setAge(rs.getInt(4));
+            list.add(member);
+        }
+
+        return list;
+    }
+
+    public void delete(String name) {
+        String sql = "DELETE FROM person where name = ?";
+
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, name);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deleteRow(String pn) throws SQLException {
+        String sql = "delete from person where phone = ?";
+
+        pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, pn);
+        pstmt.executeUpdate();
+    }
+
+    public void update(int col, String uField, String hp) throws SQLException {
+        String sql = "update person set ";
+        if (col == 0){
+            sql += "name = ?";
+        } else if (col == 1) {
+            sql += "ph = ?";
+        } else if (col == 2) {
+            sql += "email = ?";
+        } else if (col == 3) {
+            sql += "age = ?";
+        }
+        sql += " where phone = ?";
+
+        System.out.println("model update: " + sql);
+
+        pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, uField);
+        pstmt.setString(2, hp);
+        System.out.println(pstmt.executeUpdate());
     }
 
     public void reSet(int key, String name) throws SQLException {
@@ -58,7 +113,7 @@ public class HelloSwingModel {
         if (key == 1) {
             list = select();
         } else if (key == 2) {
-            rs = search(name);
+            //rs = search(name);
         }
 
         try {
@@ -87,9 +142,9 @@ public class HelloSwingModel {
                 sql = "INSERT INTO person VALUES (?, ?, ?, ?)";
                 pstmt = con.prepareStatement("INSERT INTO person VALUES (?, ?, ?, ?)");
                 pstmt.setString(1, member.getName());
-                pstmt.setString(2, member.getName());
-                pstmt.setString(3, member.getName());
-                pstmt.setInt(4, Integer.parseInt(member.getName())); //숫자이기에 integer.parseint() 사용하기
+                pstmt.setString(2, member.getPh());
+                pstmt.setString(3, member.getEmail());
+                pstmt.setInt(4, member.getAge()); //숫자이기에 integer.parseint() 사용하기
                 int result = pstmt.executeUpdate(); //업데이트는 정수형으로 반환
                 if (result == 1) {
                     System.out.println("사용자의 정보를 추가하였습니다.");
@@ -100,14 +155,8 @@ public class HelloSwingModel {
         }
     }
 
-    public void delete(String name) {
-        String sql = "DELETE FROM person where name = ?";
-
-        try {
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, name);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public void tableReset() {
+        dtm.setRowCount(0);
     }
+
 }
