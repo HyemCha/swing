@@ -66,12 +66,12 @@ public class HelloSwingModel {
         return list;
     }
 
-    public void delete(String name) {
-        String sql = "DELETE FROM person where name = ?";
+    public void delete(String phone) {
+        String sql = "DELETE FROM person where phone = ?";
 
         try {
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, name);
+            pstmt.setString(1, phone);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -86,25 +86,16 @@ public class HelloSwingModel {
         pstmt.executeUpdate();
     }
 
-    public void update(int col, String uField, String hp) throws SQLException {
-        String sql = "update person set ";
-        if (col == 0){
-            sql += "name = ?";
-        } else if (col == 1) {
-            sql += "ph = ?";
-        } else if (col == 2) {
-            sql += "email = ?";
-        } else if (col == 3) {
-            sql += "age = ?";
-        }
-        sql += " where phone = ?";
-
-        System.out.println("model update: " + sql);
+    public void update(int col, Member member, String hp) throws SQLException {
+        String sql = "update person set name = ?, email = ?, age = ? where phone = ?";
 
         pstmt = con.prepareStatement(sql);
-        pstmt.setString(1, uField);
-        pstmt.setString(2, hp);
-        System.out.println(pstmt.executeUpdate());
+        pstmt.setString(1, member.getName());
+        pstmt.setString(2, member.getEmail());
+        pstmt.setInt(3, member.getAge());
+        pstmt.setString(4, member.getPh());
+        pstmt.executeUpdate();
+
     }
 
     public void reSet(int key, String name) throws SQLException {
@@ -150,6 +141,7 @@ public class HelloSwingModel {
                     System.out.println("사용자의 정보를 추가하였습니다.");
                 }
             }
+            select();
         } catch (SQLException e) {
             e.printStackTrace();
         }

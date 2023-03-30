@@ -48,7 +48,7 @@ public class HelloSwingView extends JFrame{
 
     private void initWindow() {
         setTitle("프레임으로 탄생한 HelloSwing 객체");
-        setBounds(500, 300, 800, 500);
+        setBounds(500, 300, 800, 700);
         setLayout(new FlowLayout());
     }
 
@@ -58,7 +58,7 @@ public class HelloSwingView extends JFrame{
         dtm = new DefaultTableModel(value, title);
         table = new JTable(dtm);
 
-        p1 = new JPanel();
+        p1 = new JPanel(new GridLayout(6,2));
         p2 = new JPanel();
         p3 = new JScrollPane(table);
         p1.setBackground(Color.pink);
@@ -70,7 +70,7 @@ public class HelloSwingView extends JFrame{
         b4 = new JButton("정보 삭제");
         b5 = new JButton("정보 수정");
         b6 = new JButton("선택 삭제");
-        b7 = new JButton("행 초기화");
+//        b7 = new JButton("행 초기화");
 
         myName = new JTextField(10);
         myPhone = new JTextField(10);
@@ -84,12 +84,18 @@ public class HelloSwingView extends JFrame{
         this.add(p3);
 
         p1.add(b1);
+        p1.add(new JLabel("모든 정보 조회"));
         p1.add(b2);
+        p1.add(new JLabel("정보 추가"));
         p1.add(b3);
+        p1.add(new JLabel("이름으로 정보 조회"));
         p1.add(b4);
+        p1.add(new JLabel("번호로 정보 삭제"));
         p1.add(b5);
+        p1.add(new JLabel("셀 눌러서 해당 셀 정보 수정"));
         p1.add(b6);
-        p1.add(b7);
+        p1.add(new JLabel("선택된 행 삭제"));
+//        p1.add(b7);
 
         p2.add(myName);
         p2.add(myPhone);
@@ -104,7 +110,7 @@ public class HelloSwingView extends JFrame{
         b4.addActionListener(listener);
         b5.addActionListener(listener);
         b6.addActionListener(listener);
-        b7.addActionListener(listener);
+//        b7.addActionListener(listener);
     }
 
     public void addMouseListener(MouseListener listener) {

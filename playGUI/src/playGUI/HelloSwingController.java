@@ -29,6 +29,8 @@ public class HelloSwingController implements ActionListener, MouseListener {
 
     private String hp;
 
+    private Member member;
+
     public HelloSwingController(HelloSwingModel model, HelloSwingView view) {
         this.model = model;
         this.view = view;
@@ -45,22 +47,7 @@ public class HelloSwingController implements ActionListener, MouseListener {
         String cmd = e.getActionCommand();
         if (cmd.equals("정보 조회")) {
 //            model.tableReset();
-            if(dtm.getRowCount() > 0){
-                dtm.setRowCount(0);
-            }
-            try {
-                list = model.select();
-                for (Member l : list) {
-
-                    info[0] = l.getName();
-                    info[1] = l.getPh();
-                    info[2] = l.getEmail();
-                    info[3] = Integer.toString(l.getAge());
-                    dtm.addRow(info);
-                }
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
+            addRow();
         } else if (cmd.equals("정보 추가")) {
             if (view.getMyName().getText() != null && view.getMyPhone().getText() != null) {
                 Member member = new Member();
@@ -70,10 +57,15 @@ public class HelloSwingController implements ActionListener, MouseListener {
                 member.setAge(Integer.parseInt(view.getMyAge().getText()));
                 model.insert(member);
 
-                clearAndSelect();
+//                clearAndSelect();
+
+                addRow();
             }
 
         } else if (cmd.equals("정보 검색")) {
+            if (dtm.getRowCount() > 0){
+                dtm.setRowCount(0);
+            }
             try {
                 list = model.search(view.getMyName().getText());
                 for (Member l : list) {
@@ -87,65 +79,75 @@ public class HelloSwingController implements ActionListener, MouseListener {
                 throw new RuntimeException(ex);
             }
         } else if (cmd.equals("정보 삭제")) {
-            model.delete(view.getMyName().getText());
+            model.delete(view.getMyPhone().getText());
 
+            if (dtm.getRowCount() > 0) {
+                dtm.setRowCount(0);
+            }
             clearAndSelect();
         } else if (cmd.equals("정보 수정")) {
-            if (colNum == 0) {
-                uField = view.getMyName().getText();
-            } else if (colNum == 1) {
-                uField = view.getMyPhone().getText();
-                return;
-            } else if (colNum == 2) {
-                uField = view.getMyEmail().getText();
-            } else if (colNum == 3) {
-                uField = view.getMyAge().getText();
-            }
-            System.out.println("cont: " + uField);
+            member = new Member();
+            member.setName(view.getMyName().getText());
+            member.setPh(view.getMyPhone().getText());
+            member.setEmail(view.getMyEmail().getText());
+            member.setAge(Integer.parseInt(view.getMyAge().getText()));
             try {
-                model.update(colNum, uField, hp);
-//                dtm.removeRow(rowNum);
+                model.update(colNum, member, hp);
+                dtm.removeRow(rowNum);
 
-                clearAndSelect();
+                addRow();
+//                clearAndSelect();
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
+
         } else if (cmd.equals("선택 삭제")) {
             try {
                 model.deleteRow(hp);
 //                dtm.removeRow(rowNum);
 
-                clearAndSelect();
+                model.select();
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
-        } else if (cmd.equals("행 초기화")) {
-
+            addRow();
         }
 
         clearField();
     }
 
+    private void addRow() {
+        if(dtm.getRowCount() > 0){
+            dtm.setRowCount(0);
+        }
+        try {
+            list = model.select();
+            for (Member l : list) {
+                info[0] = l.getName();
+                info[1] = l.getPh();
+                info[2] = l.getEmail();
+                info[3] = Integer.toString(l.getAge());
+                dtm.addRow(info);
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println(e);
         int row = table.getSelectedRow();
         int col = table.getSelectedColumn();
         rowNum = row;
         colNum = col;
+
+        view.getMyName().setText(table.getModel().getValueAt(row, 0).toString());
+        view.getMyPhone().setText(table.getModel().getValueAt(row, 1).toString());
+        view.getMyEmail().setText(table.getModel().getValueAt(row, 2).toString());
+        view.getMyAge().setText(table.getModel().getValueAt(row, 3).toString());
+
         hp = table.getModel().getValueAt(row, 1).toString();
         String field = table.getModel().getValueAt(row, col).toString();
-
-        if (col == 0){
-            view.getMyName().setText(field);
-        } else if (col == 1) {
-            field = "변경불가";
-//            view.getMyPhone().setText(field);
-        } else if (col == 2) {
-            view.getMyEmail().setText(field);
-        } else if (col == 3) {
-            view.getMyAge().setText(field);
-        }
     }
 
     @Override
@@ -175,10 +177,31 @@ public class HelloSwingController implements ActionListener, MouseListener {
         view.getMyAge().setText("");
     }
 
+    public void cearFieldWithoutMe(int me) {
+        if (me == 0) {
+            view.getMyPhone().setText("");
+            view.getMyEmail().setText("");
+            view.getMyAge().setText("");
+        } else if (me == 1) {
+            view.getMyName().setText("");
+            view.getMyEmail().setText("");
+            view.getMyAge().setText("");
+        } else if (me == 2) {
+            view.getMyName().setText("");
+            view.getMyPhone().setText("");
+            view.getMyAge().setText("");
+        } else if (me == 3) {
+            view.getMyName().setText("");
+            view.getMyPhone().setText("");
+            view.getMyEmail().setText("");
+        }
+    }
+
     public void clearAndSelect() {
         dtm.setRowCount(0);
         try {
             model.select();
+            System.out.println("select 외 않됨");
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
