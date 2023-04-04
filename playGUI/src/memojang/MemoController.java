@@ -18,9 +18,11 @@ public class MemoController implements ActionListener {
         String cmd = e.getActionCommand();
 
         switch (cmd){
-            case "새로 만들기" -> model.createNew(view.getjTextArea());
+            case "새로 만들기" -> model.createNew();
             case "열기" -> model.open(view);
             case "저장" -> model.save(view);
+            case "다른 이름으로 저장" -> model.saveAs(view);
+            case "끝내기" -> model.quit(view);
         }
     }
 }
