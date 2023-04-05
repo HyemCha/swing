@@ -11,6 +11,8 @@ public class MemoView extends JFrame {
 
     private List<JMenuItem> items = new ArrayList<>();
 
+    private List<JMenuItem> editItems = new ArrayList<>();
+
     private JScrollPane jScrollPane;
 
     public JTextArea getjTextArea() {
@@ -63,6 +65,7 @@ public class MemoView extends JFrame {
 
         setShortcutKey();
         addMenuItems();
+        addEditItems();
     }
 
     private void setShortcutKey() {
@@ -107,8 +110,51 @@ public class MemoView extends JFrame {
         m1.add(items.get(5));
     }
 
+    private void addEditItems() {
+
+        KeyStroke key;
+        editItems.add(new JMenuItem("실행 취소"));
+        key = KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK);
+        editItems.get(0).setAccelerator(key);
+        m2.add(editItems.get(0));
+
+        editItems.add(new JMenuItem("잘라내기"));
+        key = KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK);
+        editItems.get(1).setAccelerator(key);
+        m2.add(editItems.get(1));
+
+        editItems.add(new JMenuItem("복사"));
+        key = KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK);
+        editItems.get(2).setAccelerator(key);
+        m2.add(editItems.get(2));
+
+        editItems.add(new JMenuItem("붙여넣기"));
+        key = KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK);
+        editItems.get(3).setAccelerator(key);
+        m2.add(editItems.get(3));
+
+        editItems.add(new JMenuItem("삭제"));
+        key = KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK);
+        editItems.get(4).setAccelerator(key);
+        m2.add(editItems.get(4));
+
+        editItems.add(new JMenuItem("모두 선택"));
+        key = KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK);
+        editItems.get(5).setAccelerator(key);
+        m2.add(editItems.get(5));
+
+        editItems.add(new JMenuItem("시간/날짜"));
+        key = KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK);
+        editItems.get(6).setAccelerator(key);
+        m2.add(editItems.get(6));
+    }
+
+
     public void addActionListener(ActionListener listener) {
         for (JMenuItem i : items) {
+            i.addActionListener(listener);
+        }
+        for (JMenuItem i : editItems) {
             i.addActionListener(listener);
         }
     }
