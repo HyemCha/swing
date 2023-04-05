@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+
 public class MemoModel {
     private JTextArea ta;
 
@@ -55,7 +57,6 @@ public class MemoModel {
             saveText(view);
         } else {
             re = jfc.showSaveDialog(view);
-            System.out.println("re: " + re);
             if (re == JFileChooser.APPROVE_OPTION) {
                 saveText(view);
             }
@@ -88,7 +89,7 @@ public class MemoModel {
         switch (result) {
             case JOptionPane.YES_NO_OPTION -> {
                 save(view);
-                view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                view.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             }
             case JOptionPane.NO_OPTION -> view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
