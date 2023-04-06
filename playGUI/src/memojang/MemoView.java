@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MemoView extends JFrame {
@@ -128,10 +130,10 @@ public class MemoView extends JFrame {
         editItems.add(new JMenuItem("실행 취소"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK);
         editItems.get(0).setAccelerator(key);
-        editItems.get(2).addActionListener(new ActionListener() {
+        editItems.get(0).addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jTextArea.red
+
             }
         });
         m2.add(editItems.get(0));
@@ -141,7 +143,7 @@ public class MemoView extends JFrame {
         editItems.add(new JMenuItem("잘라내기"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK);
         editItems.get(1).setAccelerator(key);
-        editItems.get(2).addActionListener(new ActionListener() {
+        editItems.get(1).addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jTextArea.cut();
@@ -163,7 +165,7 @@ public class MemoView extends JFrame {
         editItems.add(new JMenuItem("붙여넣기"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_V, ActionEvent.CTRL_MASK);
         editItems.get(3).setAccelerator(key);
-        editItems.get(2).addActionListener(new ActionListener() {
+        editItems.get(3).addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jTextArea.copy();
@@ -174,7 +176,7 @@ public class MemoView extends JFrame {
         editItems.add(new JMenuItem("삭제"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, ActionEvent.CTRL_MASK);
         editItems.get(4).setAccelerator(key);
-        editItems.get(2).addActionListener(new ActionListener() {
+        editItems.get(4).addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jTextArea.cut();
@@ -199,11 +201,26 @@ public class MemoView extends JFrame {
         editItems.add(new JMenuItem("모두 선택"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK);
         editItems.get(7).setAccelerator(key);
+        editItems.get(7).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jTextArea.selectAll();
+            }
+        });
         m2.add(editItems.get(7));
 
         editItems.add(new JMenuItem("시간/날짜"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK);
         editItems.get(8).setAccelerator(key);
+        editItems.get(8).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date date = new Date();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd aa HH:mm:ss");
+                simpleDateFormat.format(date);
+                jTextArea.append(simpleDateFormat.format(date));
+            }
+        });
         m2.add(editItems.get(8));
     }
 
