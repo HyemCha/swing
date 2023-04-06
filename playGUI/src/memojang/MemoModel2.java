@@ -1,14 +1,9 @@
 package memojang;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.*;
 
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-
-public class MemoModel implements MemoModelInterface{
+public class MemoModel2 implements MemoModelInterface{
 
     String fileName = "";
 
@@ -25,7 +20,7 @@ public class MemoModel implements MemoModelInterface{
 
     boolean change = false;
 
-    public MemoModel(MemoView view) {
+    public MemoModel2(MemoView view) {
         this.ta = view.getjTextArea();
         jfc = new JFileChooser();
     }
@@ -122,26 +117,8 @@ public class MemoModel implements MemoModelInterface{
     }
 
     public void quit(MemoView view) {
-        String[] buttons = {"저장","저장 안 함", "취소"};
-        int result = JOptionPane.showOptionDialog(
-                null,
-                "변경 내용을 저장하시겠습니까?",
-                "Memojang",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                buttons,
-                "저장");
 
-        switch (result) {
-            case JOptionPane.YES_NO_OPTION -> {
-                save(view);
-                view.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            }
-            case JOptionPane.NO_OPTION -> {
-//                view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            }
-        }
+        System.exit(0);
     }
 
 

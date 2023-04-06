@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 public class MemoController implements ActionListener {
     private MemoView view;
-    private MemoModel model;
+    private MemoModelInterface model;
 
-    public MemoController(MemoView view, MemoModel model) {
+    public MemoController(MemoView view, MemoModelInterface model) {
         this.view = view;
         this.model = model;
         this.view.addActionListener(this);

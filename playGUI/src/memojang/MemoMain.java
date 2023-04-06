@@ -7,7 +7,7 @@ public class MemoMain {
 
     public static void main(String[] args) {
         MemoView view = new MemoView();
-        MemoModel model = new MemoModel(view);
+        MemoModelInterface model = new MemoModel2(view);
         MemoController controller = new MemoController(view, model);
         view.setVisible(true);
     }
