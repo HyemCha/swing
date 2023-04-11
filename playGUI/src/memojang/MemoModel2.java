@@ -2,6 +2,8 @@ package memojang;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 
 public class MemoModel2 implements MemoModelInterface {
@@ -124,32 +126,41 @@ public class MemoModel2 implements MemoModelInterface {
 
     public JFrame description(MemoView view) {
         JFrame jf = new JFrame();
-        jf.setBounds(700, 300, 640, 480);
+        jf.setSize(640, 480);
         jf.setVisible(true);
         jf.setTitle("메모장 정보");
+        jf.setLayout(new BorderLayout());
 
-//        JPanel jp = new JPanel(){
-//          Image img = new ImageIcon("img/2.png").getImage();
-//          public void paint(Graphics g){
-//              g.drawImage(img, 0, 0, null);
-//          }
-//        };
-//
-//        jp.setLayout(null);
-//        jp.setBounds(0, 0, 100, 100);
-//
-//        jf.getContentPane().add(jp);
-
-
-        ImageIcon icon = new ImageIcon("img/2.png");
+        ImageIcon icon = new ImageIcon("img/cat1.jpg");
         Image img = icon.getImage();
-        Image updateImg = img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        Image updateImg = img.getScaledInstance(200, 130, Image.SCALE_SMOOTH);
         icon.setImage(updateImg);
 
         JLabel lbImg = new JLabel(icon);
-        lbImg.setBounds(0, 0, 100, 100);
+        lbImg.setSize(200, 130);
 
-        jf.getContentPane().add(lbImg);
+        JLabel description = new JLabel();
+        description.setBackground(Color.RED);
+//        description.setSize(150, 200);
+        description.setText("<html><body>안녕하세요. 저의 이름은 차혜민 입니다." +
+                "<br>저는 백엔드 웹 개발자가 되는 것이 목표입니다." +
+                "<br>돈을 모아 해외여행을 하는 것이 목표입니다.😋</body></html>");
+
+        JButton bottomButton = new JButton();
+        bottomButton.setText("확인");
+        bottomButton.setSize(120, 20);
+        bottomButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jf.dispose();
+            }
+        });
+
+        jf.add(lbImg, BorderLayout.WEST);
+        jf.add(description, BorderLayout.CENTER);
+        jf.add(bottomButton, BorderLayout.SOUTH);
+
+        jf.setLocationRelativeTo(null);
 
         return jf;
     }
