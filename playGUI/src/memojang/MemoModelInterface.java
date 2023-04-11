@@ -1,5 +1,7 @@
 package memojang;
 
+import javax.swing.*;
+
 public interface MemoModelInterface {
     void createNew();
 
@@ -10,4 +12,6 @@ public interface MemoModelInterface {
     void saveAs(MemoView view);
 
     void quit(MemoView view);
+
+    JFrame description(MemoView view);
 }

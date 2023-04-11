@@ -23,6 +23,8 @@ public class MemoController implements ActionListener {
             case "저장" -> model.save(view);
             case "다른 이름으로 저장" -> model.saveAs(view);
             case "끝내기" -> model.quit(view);
+
+            case "메모장 정보" -> model.description(view);
         }
     }
 }

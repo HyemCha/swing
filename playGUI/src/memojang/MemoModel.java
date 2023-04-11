@@ -144,6 +144,11 @@ public class MemoModel implements MemoModelInterface{
         }
     }
 
+    @Override
+    public JFrame description(MemoView view) {
+        return null;
+    }
+
 
     private void saveText(MemoView view) {
 

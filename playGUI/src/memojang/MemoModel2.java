@@ -1,9 +1,10 @@
 package memojang;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 
-public class MemoModel2 implements MemoModelInterface{
+public class MemoModel2 implements MemoModelInterface {
 
     String fileName = "";
 
@@ -30,12 +31,12 @@ public class MemoModel2 implements MemoModelInterface{
         isNew = false;
     }
 
-    public void open(MemoView view){
+    public void open(MemoView view) {
         re = jfc.showOpenDialog(view);
-        if (ta.getText().equals("")){
+        if (ta.getText().equals("")) {
             openCommon(view);
         } else {
-            String[] buttons = {"저장","저장 안 함", "취소"};
+            String[] buttons = {"저장", "저장 안 함", "취소"};
             int result = JOptionPane.showOptionDialog(
                     null,
                     "변경 내용을 저장하시겠습니까?",
@@ -71,8 +72,8 @@ public class MemoModel2 implements MemoModelInterface{
 
             try {
                 fr = new FileReader(file);
-                while ((ch = fr.read()) != -1){
-                    data += (char)ch;
+                while ((ch = fr.read()) != -1) {
+                    data += (char) ch;
                 }
                 ta.setText(data);
                 fr.close();
@@ -92,7 +93,7 @@ public class MemoModel2 implements MemoModelInterface{
         System.out.println("save isNew: " + isNew);
 
         // 내용만 바뀌고 파일명 그대로인 경우
-        if (!isNew && change){
+        if (!isNew && change) {
             saveText(view);
             isNew = false;
         } else {
@@ -119,6 +120,38 @@ public class MemoModel2 implements MemoModelInterface{
     public void quit(MemoView view) {
 
         System.exit(0);
+    }
+
+    public JFrame description(MemoView view) {
+        JFrame jf = new JFrame();
+        jf.setBounds(700, 300, 640, 480);
+        jf.setVisible(true);
+        jf.setTitle("메모장 정보");
+
+//        JPanel jp = new JPanel(){
+//          Image img = new ImageIcon("img/2.png").getImage();
+//          public void paint(Graphics g){
+//              g.drawImage(img, 0, 0, null);
+//          }
+//        };
+//
+//        jp.setLayout(null);
+//        jp.setBounds(0, 0, 100, 100);
+//
+//        jf.getContentPane().add(jp);
+
+
+        ImageIcon icon = new ImageIcon("img/2.png");
+        Image img = icon.getImage();
+        Image updateImg = img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        icon.setImage(updateImg);
+
+        JLabel lbImg = new JLabel(icon);
+        lbImg.setBounds(0, 0, 100, 100);
+
+        jf.getContentPane().add(lbImg);
+
+        return jf;
     }
 
 
@@ -158,7 +191,7 @@ public class MemoModel2 implements MemoModelInterface{
     // 이전에 저장한 텍스트 값과 같은지
     // open하고 텍스트 값과 현재 텍스트 값이 같은지
     private boolean isChanged() {
-        if (lastTa.equals(ta.getText())){
+        if (lastTa.equals(ta.getText())) {
             return false;
         }
         return true;
