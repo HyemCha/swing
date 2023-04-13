@@ -1,6 +1,9 @@
 package memojang;
 
+import memojang.format.FontStyleView;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -33,6 +36,8 @@ public class MemoView extends JFrame {
     private JMenu m1, m2, m3, m4, m5;
 
     private ActionListener listener;
+
+    private FontStyleView fontStyleView;
 
 
     public MemoView(){
@@ -133,7 +138,6 @@ public class MemoView extends JFrame {
         editItems.get(0).addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
             }
         });
         m2.add(editItems.get(0));
@@ -235,16 +239,40 @@ public class MemoView extends JFrame {
         formatItems.add(new JMenuItem("배경 색(B)"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK);
         formatItems.get(0).setAccelerator(key);
+        formatItems.get(0).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Color setColor = JColorChooser.showDialog(getParent(), "색상표", Color.yellow);
+                if(setColor != null)
+                    jTextArea.setBackground(setColor);
+            }
+        });
         m3.add(formatItems.get(0));
 
         formatItems.add(new JMenuItem("글자 색(E)"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK);
         formatItems.get(1).setAccelerator(key);
+        formatItems.get(1).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Color setColor = JColorChooser.showDialog(getParent(), "색상표", Color.BLUE);
+                if(setColor != null)
+                    jTextArea.setForeground(setColor);
+            }
+        });
         m3.add(formatItems.get(1));
 
         formatItems.add(new JMenuItem("글꼴(F)"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_F, ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK);
         formatItems.get(2).setAccelerator(key);
+        formatItems.get(2).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fontStyleView = new FontStyleView(jTextArea);
+                fontStyleView.setBounds(500, 300, 400, 300);
+                fontStyleView.setVisible(true);
+            }
+        });
         m3.add(formatItems.get(2));
     }
 
