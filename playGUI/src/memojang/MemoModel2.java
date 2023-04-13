@@ -1,5 +1,7 @@
 package memojang;
 
+import memojang.edit.Find;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -120,10 +122,21 @@ public class MemoModel2 implements MemoModelInterface {
     }
 
     public void quit(MemoView view) {
-
         System.exit(0);
     }
 
+    // edit ================================================
+    public void find(MemoView view) {
+        Find find = new Find(view, ta);
+        find.showFind();
+    }
+
+    public void findAndReplace(MemoView view) {
+        Find find = new Find(view, ta);
+        find.showReplace();
+    }
+
+    // help ================================================
     public JFrame description(MemoView view) {
         JFrame jf = new JFrame();
         jf.setSize(640, 480);
@@ -142,9 +155,14 @@ public class MemoModel2 implements MemoModelInterface {
         JLabel description = new JLabel();
         description.setBackground(Color.RED);
 //        description.setSize(150, 200);
-        description.setText("<html><body>안녕하세요. 저의 이름은 차혜민 입니다." +
-                "<br>저는 백엔드 웹 개발자가 되는 것이 목표입니다." +
-                "<br>돈을 모아 해외여행을 하는 것이 목표입니다.😋</body></html>");
+        description.setText("<html><body>안녕하세요. Hyemin's Memojang입니다." +
+                "<br>" +
+                "<br>버전: 1.0" +
+                "<br>개발자: 차혜민" +
+                "<br>" +
+                "<br>소개: 메모를 할 수 있는 어플입니다." +
+                "<br>" +
+                "<br>문의는 chm6194@gmail.com으로 주세요.</body></html>");
 
         JButton bottomButton = new JButton();
         bottomButton.setText("확인");

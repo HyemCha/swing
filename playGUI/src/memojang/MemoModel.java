@@ -145,6 +145,16 @@ public class MemoModel implements MemoModelInterface{
     }
 
     @Override
+    public void find(MemoView view) {
+
+    }
+
+    @Override
+    public void findAndReplace(MemoView view) {
+
+    }
+
+    @Override
     public JFrame description(MemoView view) {
         return null;
     }

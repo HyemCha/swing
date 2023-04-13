@@ -13,5 +13,9 @@ public interface MemoModelInterface {
 
     void quit(MemoView view);
 
+    void find(MemoView view);
+
+    void findAndReplace(MemoView view);
+
     JFrame description(MemoView view);
 }
