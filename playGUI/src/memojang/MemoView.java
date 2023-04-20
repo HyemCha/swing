@@ -3,6 +3,9 @@ package memojang;
 import memojang.format.FontStyleView;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,6 +42,9 @@ public class MemoView extends JFrame {
 
     private FontStyleView fontStyleView;
 
+    private JCheckBoxMenuItem checkBoxMenuItem;
+
+    private StatusBar statusBar;
 
     public MemoView(){
         initWindow();
@@ -56,6 +62,8 @@ public class MemoView extends JFrame {
         jTextArea = new JTextArea();
         jScrollPane = new JScrollPane(jTextArea);
 
+        statusBar = new StatusBar(jTextArea);
+
         m1 = new JMenu("파일(F)");
         m2 = new JMenu("편집(E)");
         m3 = new JMenu("서식(O)");
@@ -67,6 +75,7 @@ public class MemoView extends JFrame {
 
     private void addComponents() {
         this.add(jScrollPane);
+        this.add(BorderLayout.SOUTH, statusBar);
 
         this.setJMenuBar(mb);
 
@@ -84,6 +93,17 @@ public class MemoView extends JFrame {
         addShowItems();
         addHelpItems();
     }
+
+    public void update() {
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+
+
 
     private void setShortcutKey() {
         m1.setMnemonic(KeyEvent.VK_F);
@@ -279,15 +299,65 @@ public class MemoView extends JFrame {
     private void addShowItems() {
 
         KeyStroke key;
-        showItems.add(new JMenuItem("확대하기/축소하기"));
-        key = KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK);
-        showItems.get(0).setAccelerator(key);
+        JMenu menu = new JMenu("확대하기/축소하기");
+        showItems.add(menu);
         m4.add(showItems.get(0));
 
-        showItems.add(new JMenuItem("상태 표시줄"));
-        key = KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK);
-        showItems.get(1).setAccelerator(key);
-        m4.add(showItems.get(1));
+        menu.add(new JMenuItem("확대(I)")).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Font font = jTextArea.getFont();
+                String fontName = font.getName();
+                int fontStyle = font.getStyle();
+                int fontSize = font.getSize() + 2;
+                font = new Font(fontName, fontStyle, fontSize);
+                jTextArea.setFont(font);
+            }
+        });
+        menu.add(new JMenuItem("축소(O)")).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed (ActionEvent e){
+                Font font = jTextArea.getFont();
+                String fontName = font.getName();
+                int fontStyle = font.getStyle();
+                int fontSize = font.getSize() - 2;
+                font = new Font(fontName, fontStyle, fontSize);
+                jTextArea.setFont(font);
+            }
+        });
+
+        menu.add(new JMenuItem("확대하기/축소하기 기본값 복원")).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Font font = jTextArea.getFont();
+                String fontName = font.getName();
+                int fontStyle = font.getStyle();
+                int fontSize = 12;
+                font = new Font(fontName, fontStyle, fontSize);
+                jTextArea.setFont(font);
+            }
+        });
+
+        m4.addSeparator();
+
+        checkBoxMenuItem = new JCheckBoxMenuItem("상태 표시줄(S)");
+        checkBoxMenuItem.setState(true);
+        checkBoxMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkBoxMenuItem.addChangeListener(new ChangeListener() {
+                    @Override
+                    public void stateChanged(ChangeEvent e) {
+                        if (checkBoxMenuItem.getState() == true) {
+                            statusBar.setVisible(true);
+                        } else {
+                            statusBar.setVisible(false);
+                        }
+                    }
+                });
+            }
+        });
+        m4.add(this.checkBoxMenuItem);
     }
 
     private void addHelpItems() {
@@ -296,11 +366,23 @@ public class MemoView extends JFrame {
         helpItems.add(new JMenuItem("도움말 보기"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK);
         helpItems.get(0).setAccelerator(key);
+        helpItems.get(0).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         m5.add(helpItems.get(0));
 
         helpItems.add(new JMenuItem("피드백 보내기"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK + ActionEvent.SHIFT_MASK);
         helpItems.get(1).setAccelerator(key);
+        helpItems.get(1).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         m5.add(helpItems.get(1));
 
         helpItems.add(new JMenuItem("메모장 정보"));
