@@ -1,11 +1,13 @@
 package memojang;
 
+import calendar.MemoCalendar;
 import memojang.format.FontStyleView;
+import memojang.toolbar.ToolBar;
+import playGUI.HelloSwing;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +29,9 @@ public class MemoView extends JFrame {
 
     private List<JMenuItem> helpItems = new ArrayList<>();
 
+    private List<JMenuItem> etcItems = new ArrayList<>();
+
+
     private JScrollPane jScrollPane;
 
     public JTextArea getjTextArea() {
@@ -36,7 +41,7 @@ public class MemoView extends JFrame {
     private JTextArea jTextArea;
     private JMenuBar mb;
 
-    private JMenu m1, m2, m3, m4, m5;
+    private JMenu m1, m2, m3, m4, m5, m6;
 
     private ActionListener listener;
 
@@ -44,7 +49,13 @@ public class MemoView extends JFrame {
 
     private JCheckBoxMenuItem checkBoxMenuItem;
 
+    private JButton newBtn, openBtn, saveBtn, exitBtn, copyBtn, pasteBtn, cutBtn, fontBtn, colBtn;
+
+    private ToolBar toolBar;
+
     private StatusBar statusBar;
+
+    private List<JButton> btns = new ArrayList<>();
 
     public MemoView(){
         initWindow();
@@ -54,13 +65,52 @@ public class MemoView extends JFrame {
 
     private void initWindow() {
         setTitle("Hyemin's Memojang");
-        setBounds(800, 200, 500, 700);
+        setBounds(800, 200, 800, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void initComponents() {
         jTextArea = new JTextArea();
         jScrollPane = new JScrollPane(jTextArea);
+
+        btns.add(newBtn);
+        btns.add(openBtn);
+        btns.add(saveBtn);
+        btns.add(exitBtn);
+        btns.add(copyBtn);
+        btns.add(pasteBtn);
+        btns.add(cutBtn);
+        btns.add(fontBtn);
+        btns.add(colBtn);
+
+        ImageIcon newIcon;
+        String fileName[] = {
+                "image/save_icon.png",
+                "image/copy_icon.png",
+                "image/floppy.png",
+                "image/save_icon.png",
+                "image/save_icon.png",
+                "image/copy_icon.png",
+                "image/floppy.png",
+                "image/save_icon.png",
+                "image/save_icon.png"
+        };
+        String txt[] = {
+                "새파일 작성", "문서 가져오기", "문서 저장", "문서 작성 종료",
+                "복사", "붙여넣기", "자르기", "글꼴 바꾸기", "글자색 바꾸기"
+        };
+
+        toolBar = new ToolBar();
+
+        int i = 0;
+        for (JButton jBtn: btns) {
+            newIcon = new ImageIcon(fileName[i]);
+            jBtn = new JButton(newIcon);
+            jBtn.setToolTipText(txt[i]);
+            toolBar.add(jBtn);
+            i++;
+        }
+
 
         statusBar = new StatusBar(jTextArea);
 
@@ -69,6 +119,7 @@ public class MemoView extends JFrame {
         m3 = new JMenu("서식(O)");
         m4 = new JMenu("보기(V)");
         m5 = new JMenu("도움말(H)");
+        m6 = new JMenu("잡동사니");
 
         mb = new JMenuBar();
     }
@@ -76,6 +127,7 @@ public class MemoView extends JFrame {
     private void addComponents() {
         this.add(jScrollPane);
         this.add(BorderLayout.SOUTH, statusBar);
+        this.add(BorderLayout.NORTH, toolBar);
 
         this.setJMenuBar(mb);
 
@@ -84,6 +136,8 @@ public class MemoView extends JFrame {
         mb.add(m3);
         mb.add(m4);
         mb.add(m5);
+        mb.add(m6);
+
 
         setShortcutKey();
 
@@ -92,6 +146,7 @@ public class MemoView extends JFrame {
         addFormatItems();
         addShowItems();
         addHelpItems();
+        addEtc();
     }
 
     public void update() {
@@ -388,7 +443,42 @@ public class MemoView extends JFrame {
         helpItems.add(new JMenuItem("메모장 정보"));
         key = KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK);
         helpItems.get(2).setAccelerator(key);
+        helpItems.get(2).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new MemoInfo();
+            }
+        });
         m5.add(helpItems.get(2));
+    }
+
+    private void addEtc() {
+        etcItems.add(new JMenuItem("폰북"));
+        etcItems.get(0).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new HelloSwing();
+            }
+        });
+        m6.add(etcItems.get(0));
+
+        etcItems.add(new JMenuItem("그 외"));
+        etcItems.get(1).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        m6.add(etcItems.get(1));
+
+        etcItems.add(new JMenuItem("캘린더"));
+        etcItems.get(2).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new MemoCalendar();
+            }
+        });
+        m6.add(etcItems.get(2));
     }
 
 
@@ -408,5 +498,12 @@ public class MemoView extends JFrame {
         for (JMenuItem i : helpItems) {
             i.addActionListener(listener);
         }
+
+    }
+
+
+
+    public JButton getNewBtn() {
+        return newBtn;
     }
 }

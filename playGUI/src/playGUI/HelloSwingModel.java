@@ -1,5 +1,7 @@
 package playGUI;
 
+import db.DBConnect;
+
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
