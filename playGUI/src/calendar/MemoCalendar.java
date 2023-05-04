@@ -1,14 +1,18 @@
 package calendar;// originally uploaded to http://blog.naver.com/azure0777
 
+import db.DBConnect;
+
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.*;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 public class MemoCalendar extends CalendarDataManager { // CalendarDataManager의 GUI + 메모기능 + 시계
     // 창 구성요소와 배치도
@@ -62,6 +66,10 @@ public class MemoCalendar extends CalendarDataManager { // CalendarDataManager�
 
     static Connection con = null;
 
+    DBConnect dc = null;
+
+    String del_id;
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -71,6 +79,8 @@ public class MemoCalendar extends CalendarDataManager { // CalendarDataManager�
     }
 
     public MemoCalendar() { //구성요소 순으로 정렬되어 있음. 각 판넬 사이에 빈줄로 구별
+
+        dc = new DBConnect();
 
         mainFrame = new JFrame(title);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -180,49 +190,51 @@ public class MemoCalendar extends CalendarDataManager { // CalendarDataManager�
 
         memoPanel = new JPanel();
         memoPanel.setBorder(BorderFactory.createTitledBorder("Memo"));
-        memoArea = new JTextArea(); //xxx
+//        memoArea = new JTextArea(); //xxx
 
-        Object[] title = {"아이디", "날짜", "메모"};
-        Object[][] value = new Object[0][4];
+        Object[] title = {"아이디", "메모"};
+        Object[][] value = new Object[0][2];
         dtm = new DefaultTableModel(value, title);
         jTable = new JTable(dtm);
+        TableColumnModel columnModel = jTable.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(50);
+        columnModel.getColumn(1).setPreferredWidth(200);
+        jTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int row = jTable.getSelectedRow();
+                del_id = (String) jTable.getValueAt(row, 0);
+            }
+        });
 
-        memoArea.setLineWrap(true);
-        memoArea.setWrapStyleWord(true);
+//        memoArea.setLineWrap(true);
+//        memoArea.setWrapStyleWord(true); //
         memoAreaSP = new JScrollPane(jTable, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        readMemo();
+        readMemo(); //
 
         memoSubPanel = new JPanel();
-        saveBut = new JButton("Save");
+        saveBut = new JButton("Add"); // 일정 추가
         saveBut.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                try {
-                    File f = new File("MemoData");
-                    if (!f.isDirectory()) f.mkdir();
 
-                    String memo = memoArea.getText();
-                    if (memo.length() > 0) {
-                        BufferedWriter out = new BufferedWriter(new FileWriter("MemoData/" + calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDayOfMon < 10 ? "0" : "") + calDayOfMon + ".txt"));
-                        String str = memoArea.getText();
-                        out.write(str);
-                        out.close();
-                        bottomInfo.setText(calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDayOfMon < 10 ? "0" : "") + calDayOfMon + ".txt" + SaveButMsg1);
-                    } else
-                        bottomInfo.setText(SaveButMsg2);
-                } catch (IOException e) {
-                    bottomInfo.setText(SaveButMsg3);
+                String date = (calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDayOfMon < 10 ? "0" : "") + calDayOfMon);
+                String memo = JOptionPane.showInputDialog(null, "새로운 일정을 입력하세요 >_0");
+                if (!memo.equals("")) {
+                    dc.insert(date, memo);
                 }
+
                 showCal();
+                readMemo();
             }
         });
         delBut = new JButton("Delete");
         delBut.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                memoArea.setText("");
-                File f = new File("MemoData/" + calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDayOfMon < 10 ? "0" : "") + calDayOfMon + ".txt");
-                if (f.exists()) {
-                    f.delete();
+                if (!del_id.equals("")) {
+                    dc.delete(Integer.parseInt(del_id));
                     showCal();
+                    readMemo();
+                    del_id = "";
                     bottomInfo.setText(DelButMsg1);
                 } else
                     bottomInfo.setText(DelButMsg2);
@@ -231,7 +243,7 @@ public class MemoCalendar extends CalendarDataManager { // CalendarDataManager�
         clearBut = new JButton("Clear");
         clearBut.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                memoArea.setText(null);
+                dtm.setRowCount(0);
                 bottomInfo.setText(ClrButMsg1);
             }
         });
@@ -291,36 +303,74 @@ public class MemoCalendar extends CalendarDataManager { // CalendarDataManager�
     }
 
     private void readMemo() {
-        try {
-            File f = new File("MemoData/" + calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDayOfMon < 10 ? "0" : "") + calDayOfMon + ".txt");
-            if (f.exists()) {
-                BufferedReader in = new BufferedReader(new FileReader("MemoData/" + calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDayOfMon < 10 ? "0" : "") + calDayOfMon + ".txt"));
-                String memoAreaText = new String();
-                while (true) {
-                    String tempStr = in.readLine();
-                    if (tempStr == null) break;
-                    memoAreaText = memoAreaText + tempStr + System.getProperty("line.separator");
+//            File f = new File("MemoData/" + calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDayOfMon < 10 ? "0" : "") + calDayOfMon + ".txt");
+//            if (f.exists()) {
+//                // 임시저장공간에 파일 안의 내용을 읽어다 저장하는 객체
+//                BufferedReader in = new BufferedReader(new FileReader("MemoData/" + calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDayOfMon < 10 ? "0" : "") + calDayOfMon + ".txt"));
+//                String memoAreaText = new String();
+//                while (true) {
+//                    String tempStr = in.readLine();
+//                    if (tempStr == null) break;
+//                    // 모든 일정이 memoAreaText에 들어감
+//                    memoAreaText = memoAreaText + tempStr + System.getProperty("line.separator");
+//                }
+//                memoArea.setText(memoAreaText);
+//                in.close();
+//            } else memoArea.setText("");
+        String date = calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDayOfMon < 10 ? "0" : "") + calDayOfMon;
+
+        ResultSet rs = dc.select(date);
+
+        if (rs != null) {
+            dtm.setRowCount(0);
+            String[] info = new String[2];
+            while (true) {
+                try {
+                    if (!rs.next()) break;
+                    info[0] = Integer.toString(rs.getInt("id"));
+                    info[1] = rs.getString("day_content");
+                    dtm.addRow(info);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
                 }
-                memoArea.setText(memoAreaText);
-                in.close();
-            } else memoArea.setText("");
-        } catch (IOException e) {
-            e.printStackTrace();
+
+            }
         }
+
     }
 
     private void showCal() {
+
+        ResultSet rs = dc.select();
+
+
         for (int i = 0; i < CAL_HEIGHT; i++) {
             for (int j = 0; j < CAL_WIDTH; j++) {
                 String fontColor = "black";
                 if (j == 0) fontColor = "red";
                 else if (j == 6) fontColor = "blue";
 
-                File f = new File("MemoData/" + calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDates[i][j] < 10 ? "0" : "") + calDates[i][j] + ".txt");
-                if (f.exists()) {
-                    dateButs[i][j].setText("<html><b><font color=" + fontColor + ">" + calDates[i][j] + "</font></b></html>");
-                } else
-                    dateButs[i][j].setText("<html><font color=" + fontColor + ">" + calDates[i][j] + "</font></html>");
+                if(calDates[i][j] != 0){
+                    String date = calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDates[i][j] < 10 ? "0" : "") + calDates[i][j];
+
+                    try {
+                        rs.beforeFirst();
+                        while (rs.next()) {
+                            if (rs.getString(1).equals(date)) {
+                                dateButs[i][j].setText("<html><b><font color=" + fontColor + ">" + calDates[i][j] + "</font></b></html>");
+                                break;
+                            }
+                            dateButs[i][j].setText("<html><font color=" + fontColor + ">" + calDates[i][j] + "</font></html>");
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+//                File f = new File("MemoData/" + calYear + ((calMonth + 1) < 10 ? "0" : "") + (calMonth + 1) + (calDates[i][j] < 10 ? "0" : "") + calDates[i][j] + ".txt");
+//                dateButs[i][j].setText("<html><b><font color=" + fontColor + ">" + calDates[i][j] + "</font></b></html>");
+
 
                 JLabel todayMark = new JLabel("<html><font color=green>*</html>");
                 dateButs[i][j].removeAll();

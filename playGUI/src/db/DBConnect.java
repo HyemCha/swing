@@ -1,10 +1,13 @@
 package db;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DBConnect {
+	String DBName = "app";
+	Connection con;
+	public DBConnect() {
+		con = makeCon();
+	}
 
 	public static Connection makeCon() {
 		// TODO Auto-generated method stub
@@ -20,14 +23,63 @@ public class DBConnect {
 			e.printStackTrace();
 			return con;
 		}
-//		finally {
-//			try {
-//				con.close();				
-//			}catch(SQLException se) {
-//				se.printStackTrace();
-//			}
-//		}
-		
 	}
 
+	public ResultSet select() {
+		PreparedStatement ps;
+		ResultSet rs = null;
+		String sql;
+
+		sql = "select distinct day_num from schedule";
+		try {
+			ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return rs;
+	}
+
+	public ResultSet select(String date) {
+		PreparedStatement ps;
+		ResultSet rs = null;
+		String sql;
+
+		sql = "select * from schedule where day_num = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, date);
+			rs = ps.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return rs;
+	}
+
+	public void insert(String date, String memo) {
+		PreparedStatement ps;
+		String sql = "insert into schedule values(null, ?, ?)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, date);
+			ps.setString(2, memo);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void delete(int id) {
+		PreparedStatement ps;
+		String sql = "delete from schedule shere id = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
