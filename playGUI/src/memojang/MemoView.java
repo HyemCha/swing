@@ -397,19 +397,14 @@ public class MemoView extends JFrame {
 
         checkBoxMenuItem = new JCheckBoxMenuItem("상태 표시줄(S)");
         checkBoxMenuItem.setState(true);
-        checkBoxMenuItem.addActionListener(new ActionListener() {
+        checkBoxMenuItem.addChangeListener(new ChangeListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                checkBoxMenuItem.addChangeListener(new ChangeListener() {
-                    @Override
-                    public void stateChanged(ChangeEvent e) {
-                        if (checkBoxMenuItem.getState() == true) {
-                            statusBar.setVisible(true);
-                        } else {
-                            statusBar.setVisible(false);
-                        }
-                    }
-                });
+            public void stateChanged(ChangeEvent e) {
+                if (checkBoxMenuItem.getState() == true) {
+                    statusBar.setVisible(true);
+                }else{
+                    statusBar.setVisible(false);
+                }
             }
         });
         m4.add(this.checkBoxMenuItem);
