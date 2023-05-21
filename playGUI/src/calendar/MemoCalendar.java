@@ -80,7 +80,7 @@ public class MemoCalendar extends CalendarDataManager { // CalendarDataManager�
 
     public MemoCalendar() { //구성요소 순으로 정렬되어 있음. 각 판넬 사이에 빈줄로 구별
 
-        dc = new DBConnect();
+        dc = new DBConnect(DBConnect.APP);
 
         mainFrame = new JFrame(title);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

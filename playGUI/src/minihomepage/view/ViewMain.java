@@ -1,26 +1,35 @@
 package minihomepage.view;
 
+import minihomepage.view.structure.Categories;
+import minihomepage.view.structure.ViewProfile;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class ViewMain extends JFrame {
-    private JTabbedPane tabbedPane;
-    private JPanel mainPanel, panel1;
+    private Categories tabbedPane;
+    private ViewProfile viewProfile;
 
     public ViewMain() {
-        setTitle("MiniHomePage");
-        setBounds(500, 300, 1000, 700);
-        setVisible(true);
+        initWindow();
+        initComponents();
+        addComponents();
     }
 
     public void initWindow() {
-        tabbedPane = new JTabbedPane();
-        mainPanel = new JPanel();
-        panel1 = new JPanel();
+        setTitle("MiniHomePage");
+        setBounds(500, 300, 800, 500);
+        setVisible(true);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
-    public void addTab() {
-        add(mainPanel);
-        mainPanel.add(tabbedPane);
-        tabbedPane.addTab("홈", panel1);
+    public void initComponents() {
+        viewProfile = new ViewProfile();
+        tabbedPane = new Categories();
+    }
+
+    public void addComponents() {
+        add(viewProfile, BorderLayout.WEST);
+        add(tabbedPane);
     }
 }

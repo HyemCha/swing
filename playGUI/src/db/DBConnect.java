@@ -3,13 +3,34 @@ package db;
 import java.sql.*;
 
 public class DBConnect {
-	String DBName = "app";
+	public final static String APP = "app";
+	public final static String MINIHOMEPAGE = "app";
 	Connection con;
+
 	public DBConnect() {
 		con = makeCon();
 	}
+	public DBConnect(String DBName) {
+		con = makeCon(DBName);
+	}
 
 	public static Connection makeCon() {
+		// TODO Auto-generated method stub
+		String url = "jdbc:mysql://localhost:3306/app?serverTimezone=Asia/Seoul";
+		String user = "root";
+		String pass = "1234";
+		Connection con = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(url, user, pass);
+			return con;
+		}catch(Exception e){
+			e.printStackTrace();
+			return con;
+		}
+	}
+
+	public static Connection makeCon(String DBName) {
 		// TODO Auto-generated method stub
 		String url = "jdbc:mysql://localhost:3306/app?serverTimezone=Asia/Seoul";
 		String user = "root";
