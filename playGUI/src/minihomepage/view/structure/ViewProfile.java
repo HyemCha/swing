@@ -6,6 +6,7 @@ import java.awt.*;
 public class ViewProfile extends JPanel {
     private ViewProfileImage profileImage;
     private JLabel description;
+    private JPanel buttons;
 
     public ViewProfile() {
         setBorder(BorderFactory.createTitledBorder("This is Profile"));
@@ -16,6 +17,9 @@ public class ViewProfile extends JPanel {
 
         description = new JLabel("user description");
         add(description);
+
+        buttons = new ViewProfileButtons();
+        add(buttons, BorderLayout.SOUTH);
     }
 
 }

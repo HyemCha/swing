@@ -11,7 +11,7 @@ public class ImageRenderer extends DefaultListCellRenderer {
         this.imageMap = imageMap;
     }
 
-    Font font = new Font("helvitica", Font.ITALIC, 24);
+    Font font = new Font("helvetica", Font.ITALIC, 24);
 
     @Override
     public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
@@ -20,7 +20,7 @@ public class ImageRenderer extends DefaultListCellRenderer {
         );
         // 보여줄 이미지
         label.setIcon(imageMap.get((String) value));
-        label.set
+//        label.set
         // text 위치
         label.setHorizontalTextPosition(JLabel.RIGHT);
         label.setFont(font);

@@ -8,7 +8,6 @@ public class DiaryButtons extends JPanel {
     private JButton addBtn, editBtn;
     public DiaryButtons() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
-        setBackground(Color.pink);
 
         initComponents();
         addComponents();

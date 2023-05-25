@@ -4,15 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Home extends JPanel {
-    InnerHome diary, guestBook;
+    HomeTable diary, guestBook;
+    JPanel image;
     public Home() {
         setPreferredSize(new Dimension(600, 500));
 //        setBorder(BorderFactory.createTitledBorder("testtest"));
+        image = new HomeImage();
+        add(image, BorderLayout.NORTH);
 
-        diary = new InnerHome("다이어리");
+        diary = new HomeTable("다이어리");
         add(diary, BorderLayout.WEST);
 
-        guestBook = new InnerHome("방명록");
+        guestBook = new HomeTable("방명록");
         add(guestBook, BorderLayout.EAST);
     }
 

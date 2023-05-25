@@ -1,35 +1,28 @@
-package minihomepage.view.home;
+package minihomepage.view.guestbook;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.util.Vector;
 
-public class InnerHome extends JPanel{
-    private JTable table;
+public class GuestBookList extends JScrollPane {
     private DefaultTableModel model;
+    private JTable table;
     private Vector<String> vector;
 
-    public InnerHome(String name) {
-        setPreferredSize(new Dimension(230, 250));
-        setBorder(BorderFactory.createTitledBorder(name));
-
+    public GuestBookList() {
         initComponents();
         addTableHeader();
+        getViewport().add(table);
         addDataTest();
-        addComponents();
     }
 
-    void initComponents() {
+    public void initComponents() {
         vector = new Vector<>();
     }
 
-    void addComponents() {
-        add(table);
-    }
-
-    void addTableHeader() {
-        vector.addElement("제목");
+    public void addTableHeader() {
+        vector.addElement("닉네임");
+        vector.addElement("내용");
         vector.addElement("날짜");
         model = new DefaultTableModel(vector, 0){
             public boolean isCellEditable(int r, int c) {
@@ -40,10 +33,11 @@ public class InnerHome extends JPanel{
         table = new JTable(model);
     }
 
-    void addDataTest() {
+    public void addDataTest() {
         Vector<String> v = new Vector<>();
-        v.add("1");
-        v.add("1");
+        v.add("yunjin");
+        v.add("하이루 방가방가");
+        v.add("2023-01-01");
         model.addRow(v);
     }
 }
