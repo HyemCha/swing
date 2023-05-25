@@ -10,4 +10,6 @@ alter table guest_book ADD foreign key(user_id) references user (id) ON DELETE c
 
 insert into guest_book values(null, 1, "2hi hyemin i'm jennifer!", current_timestamp, null, 2);
 
-select * from guest_book
+select * from guest_book;
+
+show tables;
