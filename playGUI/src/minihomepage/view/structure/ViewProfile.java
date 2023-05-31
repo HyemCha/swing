@@ -9,6 +9,7 @@ public class ViewProfile extends JPanel {
     private JPanel buttons;
 
     public ViewProfile() {
+//        setLayout(new FlowLayout());
         setBorder(BorderFactory.createTitledBorder("This is Profile"));
         setPreferredSize(new Dimension(200, 100));
 
