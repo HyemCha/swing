@@ -5,10 +5,11 @@ import minihomepage.view.structure.ViewProfile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class ViewMain extends JFrame {
     private Categories tabbedPane;
-    private ViewProfile viewProfile;
+    public ViewProfile viewProfile;
 
     public ViewMain() {
         initWindow();
@@ -31,5 +32,9 @@ public class ViewMain extends JFrame {
     public void addComponents() {
         add(viewProfile, BorderLayout.WEST);
         add(tabbedPane);
+    }
+
+    public void addActionListener(ActionListener listener) {
+        viewProfile.addActionListener(listener);
     }
 }

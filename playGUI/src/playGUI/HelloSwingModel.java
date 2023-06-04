@@ -24,7 +24,7 @@ public class HelloSwingModel {
     static Object[][] obj;
 
     public HelloSwingModel() {
-        this.con = DBConnect.makeCon();
+//        this.con = DBConnect.makeCon();
     }
 
     public List<Member> select() throws SQLException {

@@ -1,19 +1,17 @@
-package minihomepage.model;
-
-import db.DBConnect;
-import minihomepage.db.DB;
+package minihomepage.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ModelMain {
-    private Connection con = null;
-    private DB db;
-    public ModelMain() {
-        this.con = DBConnect.makeCon(DBConnect.MINIHOMEPAGE);
-//        this.db = new DB("minihomepage", con);
+public class DB {
+    static Connection con = null;
+    public String DBName;
+
+    public DB(String DBName, Connection con) {
+        this.DBName = DBName;
+        this.con = con;
     }
 
     // get user profile
@@ -83,5 +81,4 @@ public class ModelMain {
 
         return rs;
     }
-
 }

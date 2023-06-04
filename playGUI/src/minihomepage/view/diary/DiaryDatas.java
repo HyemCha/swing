@@ -21,7 +21,7 @@ public class DiaryDatas extends JPanel{
         JList list = new JList<>(title);
         list.setCellRenderer(new ImageRenderer(imageMap));
 
-        System.out.println("LOG::imageMap - " + imageMap);
+//        System.out.println("LOG::imageMap - " + imageMap);
 
         JScrollPane scroll = new JScrollPane(list);
         scroll.setPreferredSize(new Dimension(500, 400));

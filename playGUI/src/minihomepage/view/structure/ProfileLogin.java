@@ -4,10 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ProfileLogin extends JPanel {
-    JLabel idL;
-    JLabel pwL;
-    JTextField id;
-    JPasswordField pwd;
+    public JLabel idL, pwL;
+    public JTextField id;
+    public JPasswordField pwd;
     public ProfileLogin() {
         setLayout(new GridLayout(0, 2));
         idL = new JLabel("ID : ");
@@ -19,5 +18,13 @@ public class ProfileLogin extends JPanel {
         add(id);
         add(pwL);
         add(pwd);
+    }
+
+    public String getId() {
+        return id.getText().toString();
+    }
+
+    public String getPwd() {
+        return pwd.getText();
     }
 }

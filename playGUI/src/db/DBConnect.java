@@ -4,38 +4,37 @@ import java.sql.*;
 
 public class DBConnect {
 	public final static String APP = "app";
-	public final static String MINIHOMEPAGE = "app";
-	Connection con;
+	public final static String MINIHOMEPAGE = "minihomepage";
+	static Connection con = null;
+	static String user = "root";
+	static String pass = "1234";
 
-	public DBConnect() {
-		con = makeCon();
-	}
+//	public DBConnect() {
+//		con = makeCon();
+//	}
 	public DBConnect(String DBName) {
 		con = makeCon(DBName);
 	}
 
-	public static Connection makeCon() {
-		// TODO Auto-generated method stub
-		String url = "jdbc:mysql://localhost:3306/app?serverTimezone=Asia/Seoul";
-		String user = "root";
-		String pass = "1234";
-		Connection con = null;
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection(url, user, pass);
-			return con;
-		}catch(Exception e){
-			e.printStackTrace();
-			return con;
-		}
-	}
+//	public static Connection makeCon() {
+//		// TODO Auto-generated method stub
+//		String url = "jdbc:mysql://localhost:3306/app?serverTimezone=Asia/Seoul";
+//
+//		try {
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			con = DriverManager.getConnection(url, user, pass);
+//			return con;
+//		}catch(Exception e){
+//			e.printStackTrace();
+//			return con;
+//		}
+//	}
 
 	public static Connection makeCon(String DBName) {
+		System.out.println("dfsdf::"+DBName);
 		// TODO Auto-generated method stub
-		String url = "jdbc:mysql://localhost:3306/app?serverTimezone=Asia/Seoul";
-		String user = "root";
-		String pass = "1234";
-		Connection con = null;
+		String url = "jdbc:mysql://localhost:3306/minihomepage?serverTimezone=Asia/Seoul";
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(url, user, pass);
