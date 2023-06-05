@@ -21,14 +21,15 @@ public class HomeService {
         rs = model.selectUser();
         try {
             while (rs.next()) {
+                user = null;
                 System.out.println("LOG::HomeService-24::" + rs.getString(2) + "/" + rs.getString(4));
                 if (id.equals(rs.getString(2)) && pwd.equals(rs.getString(4))) {
+                    System.out.println("LOG::HomeService-26::" + rs.getString(2) + "/" + rs.getString(4));
                     user = new User();
                     user.setId(rs.getInt(1));
                     user.setEmail(rs.getString(2));
                     user.setNickname(rs.getString(3));
                     user.setPwd(rs.getString(4));
-                    System.out.println("LOG::HomeService-30::" + user);
                     break;
                 }
             }

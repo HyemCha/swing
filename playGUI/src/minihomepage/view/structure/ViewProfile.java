@@ -46,6 +46,15 @@ public class ViewProfile extends JPanel {
         description.setText(nickname);
     }
 
+    public void logedOut() {
+        buttons.logedOut();
+        description.setText("로그인 plz~🙏");
+    }
+
+    public void logedIn() {
+        buttons.logedIn();
+    }
+
     public void addActionListener(ActionListener listener) {
         buttons.addActionListener(listener);
     }

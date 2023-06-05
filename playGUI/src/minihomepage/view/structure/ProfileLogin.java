@@ -24,7 +24,15 @@ public class ProfileLogin extends JPanel {
         return id.getText().toString();
     }
 
+    public void setId(String t) {
+        id.setText(t);
+    }
+
     public String getPwd() {
         return pwd.getText();
+    }
+
+    public void setPwd(String t) {
+        pwd.setText(t);
     }
 }

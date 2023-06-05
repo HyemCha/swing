@@ -2,7 +2,6 @@ package minihomepage.view.structure;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ViewProfileButtons extends JPanel {
@@ -11,11 +10,8 @@ public class ViewProfileButtons extends JPanel {
     public ViewProfileButtons() {
         setLayout(new GridLayout(0, 1));
         initComponents();
-        // 로그인 안 한 경우: 로그인 버튼과 회원가입 버튼이 뜸(로그인 버튼 없애고 로그인 버튼, 회원가입 버튼 추가)
-        notLogedIn();
-        // 로그인 한 경우: 로그아웃 버튼만 뜸(로그인 버튼과 회원가입 버튼 없애고 로그인버튼 추가)
-
-
+        addComponents();
+        logedOut();
     }
 
     void initComponents(){
@@ -26,14 +22,44 @@ public class ViewProfileButtons extends JPanel {
         profileLogin = new ProfileLogin();
     }
 
-    void notLogedIn() {
+    void addComponents() {
         add(profileLogin);
         add(logIn);
         add(signUp);
+        add(logOut);
+
+    }
+
+    public void logedOut() {
+//        removeAll();
+//        add(profileLogin);
+//        add(logIn);
+//        add(signUp);
+//        revalidate();
+        profileLogin.setVisible(true);
+        logIn.setVisible(true);
+        signUp.setVisible(true);
+
+        logOut.setVisible(false);
+    }
+
+    public void logedIn() {
+//        removeAll();
+//        profileLogin.setId("");
+//        profileLogin.setPwd("");
+//        add(logOut);
+//        revalidate();
+
+        logOut.setVisible(true);
+
+        profileLogin.setVisible(false);
+        logIn.setVisible(false);
+        signUp.setVisible(false);
     }
 
     public void addActionListener(ActionListener listener) {
         logIn.addActionListener(listener);
         signUp.addActionListener(listener);
+        logOut.addActionListener(listener);
     }
 }

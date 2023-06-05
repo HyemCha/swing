@@ -2,7 +2,6 @@ package minihomepage.controller;
 
 import minihomepage.model.dao.User;
 import minihomepage.service.HomeService;
-import minihomepage.view.home.Home;
 import minihomepage.view.structure.ViewProfile;
 
 import javax.swing.*;
@@ -12,7 +11,7 @@ import java.awt.event.ActionListener;
 public class ProfileController implements ActionListener {
     private HomeService service;
     private ViewProfile profile;
-    public static User user = new User();
+    public User user;
 
     public ProfileController(HomeService service, ViewProfile profile) {
         this.service = service;
@@ -24,17 +23,19 @@ public class ProfileController implements ActionListener {
         String cmd = e.getActionCommand();
         switch (cmd){
             case "로그인" -> {
-                System.out.println("LOG::ProfileController-27::" + profile.getId());
                 user = service.login(profile.getId(), profile.getPwd());
-                if (user != null)
-                    profile.setUserName(user.getNickname());
-                else
+
+                if (user != null) {
+                    System.out.println("LOG::ProfileController-31::" + user.getId());
+                    profile.setNickname(user.getNickname());
+                    profile.logedIn();
+                }else
                     JOptionPane.showMessageDialog(null, "Login Failure.");
 
-                System.out.println("LOG::ProfileController-34::로그인 test-" + user.getNickname());
-                profile.setUserName(user.getNickname());
-                System.out.println("LOG::ProfileController-36::" + profile.getUserName());
-                profile.setNickname(user.getNickname());
+            }
+            case "로그아웃" -> {
+                user = null;
+                profile.logedOut();
             }
         }
     }
