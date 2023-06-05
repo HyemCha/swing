@@ -42,8 +42,16 @@ public class ViewProfile extends JPanel {
         return buttons.profileLogin.getPwd();
     }
 
+    public void setNickname(String nickname) {
+        description.setText(nickname);
+    }
+
     public void addActionListener(ActionListener listener) {
         buttons.addActionListener(listener);
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+    }
 }

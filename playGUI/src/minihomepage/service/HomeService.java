@@ -29,6 +29,7 @@ public class HomeService {
                     user.setNickname(rs.getString(3));
                     user.setPwd(rs.getString(4));
                     System.out.println("LOG::HomeService-30::" + user);
+                    break;
                 }
             }
         } catch (SQLException e) {

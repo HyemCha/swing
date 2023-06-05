@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 public class ProfileController implements ActionListener {
     private HomeService service;
     private ViewProfile profile;
-    public User user = new User();
+    public static User user = new User();
 
     public ProfileController(HomeService service, ViewProfile profile) {
         this.service = service;
@@ -32,6 +32,9 @@ public class ProfileController implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Login Failure.");
 
                 System.out.println("LOG::ProfileController-34::로그인 test-" + user.getNickname());
+                profile.setUserName(user.getNickname());
+                System.out.println("LOG::ProfileController-36::" + profile.getUserName());
+                profile.setNickname(user.getNickname());
             }
         }
     }
