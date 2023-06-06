@@ -1,5 +1,6 @@
 package minihomepage;
 
+import minihomepage.controller.DiaryController;
 import minihomepage.controller.ProfileController;
 import minihomepage.model.ModelMain;
 import minihomepage.service.HomeService;
@@ -15,7 +16,7 @@ public class MiniHomepageMain {
                 ViewMain view = new ViewMain();
                 ModelMain model = new ModelMain();
                 HomeService service = new HomeService(model);
-                ProfileController controller = new ProfileController(service, view.viewProfile);
+                ProfileController controller = new ProfileController(service, view, model);
                 view.addActionListener(controller);
             }
         });

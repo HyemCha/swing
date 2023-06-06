@@ -51,14 +51,15 @@ public class ModelMain {
     }
 
     // diary
-    public ResultSet selectDiary() {
+    public ResultSet selectDiary(int id) {
         PreparedStatement ps;
         ResultSet rs = null;
         String sql;
 
-        sql = "select * from diary";
+        sql = "select * from diary where user_id = ? order by create_at desc";
         try {
-            ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();

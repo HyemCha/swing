@@ -1,23 +1,25 @@
 package minihomepage.view.structure;
 
-import minihomepage.view.diary.Diary;
+import minihomepage.view.diary.DiaryMain;
 import minihomepage.view.guestbook.GuestBook;
-import minihomepage.view.home.Home;
+import minihomepage.view.home.HomeMain;
 
 import javax.swing.*;
 
 public class Categories extends JTabbedPane{
-    private JPanel panel1, panel2, panel3;
+    public HomeMain home;
+    public DiaryMain diary;
+    public GuestBook guestBook;
 
     public Categories() {
         setTabPlacement(JTabbedPane.RIGHT);
 
-        panel1 = new Home();
-        panel2 = new Diary();
-        panel3 = new GuestBook();
+        home = new HomeMain();
+        diary = new DiaryMain();
+        guestBook = new GuestBook();
 
-        addTab("🏠홈", null, panel1, "Home");
-        addTab("다이어리", null, panel2, "Diary");
-        addTab("방명록", null, panel3, "Guest Book");
+        addTab("🏠홈", null, home, "Home");
+        addTab("다이어리", null, diary, "Diary");
+        addTab("방명록", null, guestBook, "Guest Book");
     }
 }

@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class ViewMain extends JFrame {
-    private Categories tabbedPane;
+    public Categories tabbedPane;
     public ViewProfile viewProfile;
 
     public ViewMain() {

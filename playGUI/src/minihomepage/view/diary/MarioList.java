@@ -1,25 +1,20 @@
 package minihomepage.view.diary;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
+import java.awt.*;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.SwingUtilities;
+import java.util.*;
+import javax.swing.*;
 
 public class MarioList {
 
     private final Map<String, ImageIcon> imageMap;
 
     public MarioList() {
-        String[] nameList = {"Mario", "Luigi", "Bowser", "Koopa", "Princess"};
+        String[] title = {"Mario", "Luigi", "Bowser", "Koopa", "Princess"};
+        Vector<String> nameList = new Vector<>();
+        for (String t : title) {
+            nameList.add(t);
+        }
         imageMap = createImageMap(nameList);
         JList list = new JList(nameList);
         list.setCellRenderer(new MarioListRenderer());
@@ -43,17 +38,17 @@ public class MarioList {
         public Component getListCellRendererComponent(
                 JList list, Object value, int index,
                 boolean isSelected, boolean cellHasFocus) {
-
             JLabel label = (JLabel) super.getListCellRendererComponent(
                     list, value, index, isSelected, cellHasFocus);
             label.setIcon(imageMap.get((String) value));
+
             label.setHorizontalTextPosition(JLabel.RIGHT);
             label.setFont(font);
             return label;
         }
     }
 
-    private Map<String, ImageIcon> createImageMap(String[] list) {
+    private Map<String, ImageIcon> createImageMap(Vector<String> list) {
         Map<String, ImageIcon> map = new HashMap<>();
         try {
             map.put("Mario", new ImageIcon(new URL("http://i.stack.imgur.com/NCsHu.png")));

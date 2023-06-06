@@ -3,10 +3,10 @@ package minihomepage.view.home;
 import javax.swing.*;
 import java.awt.*;
 
-public class Home extends JPanel {
+public class HomeMain extends JPanel {
     HomeTable diary, guestBook;
     JPanel image;
-    public Home() {
+    public HomeMain() {
         setPreferredSize(new Dimension(600, 500));
 //        setBorder(BorderFactory.createTitledBorder("testtest"));
         image = new HomeImage();

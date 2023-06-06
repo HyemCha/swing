@@ -19,8 +19,13 @@ public class ImageRenderer extends DefaultListCellRenderer {
                 list, value, index, isSelected, cellHasFocus
         );
         // 보여줄 이미지
-        label.setIcon(imageMap.get((String) value));
-//        label.set
+        ImageIcon imgIcon = imageMap.get((String) value);
+        if (imageMap.get((String) value).getImage() != null) {
+            Image img = imageMap.get((String) value).getImage().getScaledInstance(80, 80, Image.SCALE_FAST);
+            imgIcon = new ImageIcon(img);
+        }
+
+        label.setIcon(imgIcon);
         // text 위치
         label.setHorizontalTextPosition(JLabel.RIGHT);
         label.setFont(font);
