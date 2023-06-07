@@ -16,7 +16,6 @@ public class DiaryController {
     ModelMain model;
     public ResultSet rs = null;
     private User user;
-    String[] title;
     private Diary diary;
     private Vector<Diary> diaryList = new Vector<>();
     private Vector<String> diaryTitle = new Vector<>();

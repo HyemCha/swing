@@ -1,7 +1,7 @@
 package minihomepage.view.structure;
 
 import minihomepage.view.diary.DiaryMain;
-import minihomepage.view.guestbook.GuestBook;
+import minihomepage.view.guestbook.GuestBookMain;
 import minihomepage.view.home.HomeMain;
 
 import javax.swing.*;
@@ -9,14 +9,14 @@ import javax.swing.*;
 public class Categories extends JTabbedPane{
     public HomeMain home;
     public DiaryMain diary;
-    public GuestBook guestBook;
+    public GuestBookMain guestBook;
 
     public Categories() {
         setTabPlacement(JTabbedPane.RIGHT);
 
         home = new HomeMain();
         diary = new DiaryMain();
-        guestBook = new GuestBook();
+        guestBook = new GuestBookMain();
 
         addTab("🏠홈", null, home, "Home");
         addTab("다이어리", null, diary, "Diary");

@@ -58,4 +58,13 @@ public class GuestBook {
     private String content;
     private Timestamp createAt;
     private Timestamp updateAt;
+    private String hostNickname;
+
+    public String getHostNickname() {
+        return hostNickname;
+    }
+
+    public void setHostNickname(String hostNickname) {
+        this.hostNickname = hostNickname;
+    }
 }

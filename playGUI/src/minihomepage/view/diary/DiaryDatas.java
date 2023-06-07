@@ -12,22 +12,28 @@ import java.util.Vector;
 // 1. 날짜와 나머지 데이터를 따로 가져와 표시
 // 2. 어색하지만 다같이 표시
 
-public class DiaryDatas extends JPanel{
+public class DiaryDatas extends JScrollPane{
+    private DefaultListModel model;
+    private JList list;
     private Map<String, ImageIcon> imageMap;
-    public String[] title;
     public DiaryDatas() {
 
     }
 
     void initComponents(Vector<String> diaryTitle, Vector<Diary> diaryList) {
         imageMap = createImageMap(diaryList);
-        JList list = new JList<>(diaryTitle);
+        System.out.println("LOG::DiaryDatas-32::" + imageMap.size());
+        list = new JList<>();
+        model = new DefaultListModel<>();
+        for (String t : diaryTitle) {
+            model.addElement(t);
+        }
+
+        list.setModel(model);
         list.setCellRenderer(new ImageRenderer(imageMap));
 
-        JScrollPane scroll = new JScrollPane(list);
-        scroll.setPreferredSize(new Dimension(500, 400));
-
-        add(scroll);
+        setPreferredSize(new Dimension(500, 400));
+        getViewport().add(list);
     }
 
     private Map<String, ImageIcon> createImageMap(Vector<Diary> diaryList) {
@@ -41,31 +47,4 @@ public class DiaryDatas extends JPanel{
         }
         return map;
     }
-
-//    public class ImageRenderer extends DefaultListCellRenderer {
-//
-//        public ImageRenderer() {
-//        }
-//
-//        Font font = new Font("helvetica", Font.ITALIC, 24);
-//
-//        @Override
-//        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-//            JLabel label = (JLabel) super.getListCellRendererComponent(
-//                    list, value, index, isSelected, cellHasFocus
-//            );
-//            // 보여줄 이미지
-//            ImageIcon imgIcon = imageMap.get((String) value);
-//            if (imageMap.get((String) value).getImage() != null) {
-//                Image img = imageMap.get((String) value).getImage().getScaledInstance(80, 80, Image.SCALE_FAST);
-//                imgIcon = new ImageIcon(img);
-//            }
-//            System.out.println("LOG::DiaryDatas-63::" + imageMap.get(value));
-//            label.setIcon(imgIcon);
-//            // text 위치
-//            label.setHorizontalTextPosition(JLabel.RIGHT);
-//            label.setFont(font);
-//            return label;
-//        }
-//    }
 }
