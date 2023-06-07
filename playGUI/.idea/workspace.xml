@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4b111b92-e2b5-4ba7-a575-040bbf816b4c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.ignore" beforeDir="false" afterPath="$PROJECT_DIR$/.ignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NgxrBzirrr54wFsyHAoTwPR7rU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;CSV-Groovy.csv.groovy&quot;,
+    &quot;database.data.extractors.current.id&quot;: &quot;CSV-Groovy.csv.groovy&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/chm61/My/coding/swing/playGUI&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\chm61\My\coding\swing\playGUI\image\minihomepage" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MiniHomepageMain">
+    <configuration name="HelloSwing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="playGUI.HelloSwing" />
+      <module name="playGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="playGUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MarioList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="minihomepage.view.diary.MarioList" />
+      <module name="playGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="minihomepage.view.diary.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MiniHomepageMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="minihomepage.MiniHomepageMain" />
+      <module name="playGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="minihomepage.view.view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TextSamplerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="minihomepage.view.diary.TextSamplerDemo" />
+      <module name="playGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="minihomepage.view.diary.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MiniHomepageMain" />
+        <item itemvalue="Application.MarioList" />
+        <item itemvalue="Application.TextSamplerDemo" />
+        <item itemvalue="Application.HelloSwing" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b111b92-e2b5-4ba7-a575-040bbf816b4c" name="Changes" comment="" />
+      <created>1680099727244</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680099727244</updated>
+      <workItem from="1680099727738" duration="14216000" />
+      <workItem from="1680604241555" duration="447000" />
+      <workItem from="1680705915895" duration="100000" />
+      <workItem from="1680706060638" duration="92000" />
+      <workItem from="1684488658780" duration="2234000" />
+      <workItem from="1684494889914" duration="861000" />
+      <workItem from="1684506732022" duration="2935000" />
+      <workItem from="1684557744379" duration="12361000" />
+      <workItem from="1684578005728" duration="7181000" />
+      <workItem from="1684636395656" duration="8134000" />
+      <workItem from="1684742338465" duration="5988000" />
+      <workItem from="1684758183532" duration="6962000" />
+      <workItem from="1685535610934" duration="6211000" />
+      <workItem from="1685793839710" duration="5658000" />
+      <workItem from="1685858160962" duration="18796000" />
+      <workItem from="1685962040546" duration="13424000" />
+      <workItem from="1686016985165" duration="8796000" />
+      <workItem from="1686033343757" duration="14570000" />
+      <workItem from="1686130944647" duration="18971000" />
+      <workItem from="1686153656752" duration="78000" />
+      <workItem from="1686153755737" duration="62000" />
+      <workItem from="1686153837336" duration="182000" />
+      <workItem from="1686154031765" duration="519000" />
+      <workItem from="1686154574729" duration="356000" />
+      <workItem from="1686155019566" duration="438000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

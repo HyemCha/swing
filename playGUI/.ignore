@@ -5,7 +5,9 @@
 # Compiled class file
 *.class
 bin/
-
+bin
+*.idea
+*.iml
 
 # Log file
 *.log
