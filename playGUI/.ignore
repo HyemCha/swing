@@ -6,8 +6,8 @@
 *.class
 bin/
 bin
-*.idea
-*.iml
+.idea
+.iml
 
 # Log file
 *.log
