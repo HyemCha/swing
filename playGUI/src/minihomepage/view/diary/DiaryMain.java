@@ -11,8 +11,6 @@ public class DiaryMain extends JPanel {
     public DiaryDatas dataTest;
     public DiaryButtons buttons;
     public DiaryMain() {
-        setBackground(Color.WHITE);
-
         dataTest = new DiaryDatas();
         add(dataTest);
 

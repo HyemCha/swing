@@ -69,14 +69,15 @@ public class ModelMain {
     }
 
     // guest book
-    public ResultSet selectGuestBook() {
+    public ResultSet selectGuestBook(int userId) {
         PreparedStatement ps;
         ResultSet rs = null;
         String sql;
 
-        sql = "select * from guest_book";
+        sql = "select * from guest_book where user_id = ? order by create_at desc";
         try {
-            ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, userId);
             rs = ps.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
