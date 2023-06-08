@@ -28,7 +28,7 @@ public class GuestBookController {
     }
 
     public void setGuestBook() {
-        rs = model.selectGuestBook(user.getId());
+        rs = model.selectGuestBook(user.getId(), false);
         try {
             while (rs.next()) {
                 guestBook = new GuestBook();

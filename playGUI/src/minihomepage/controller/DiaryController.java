@@ -30,7 +30,7 @@ public class DiaryController {
     }
 
     public void setDiary() {
-        rs = model.selectDiary(user.getId());
+        rs = model.selectDiary(user.getId(), false);
         try {
             while (rs.next()) {
                 System.out.println("LOG:DiaryController-25::title-" + rs.getString(3));

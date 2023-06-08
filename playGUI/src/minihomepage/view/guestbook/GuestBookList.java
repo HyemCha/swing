@@ -27,11 +27,12 @@ public class GuestBookList extends JScrollPane {
 
         table = new JTable(model);
         getViewport().add(table);
-        Vector<String> v = new Vector<>();
+        Vector<String> v;
         for (GuestBook g : guestBookList) {
+            v = new Vector<>();
             v.add(g.getHostNickname());
             v.add(g.getContent());
-            v.add(g.getCreateAt().toString());
+            v.add(g.getCreateAt()!=null?g.getCreateAt().toString():null);
             model.addRow(v);
         }
     }

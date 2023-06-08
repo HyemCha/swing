@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ModelMain {
     private Connection con = null;
@@ -34,29 +36,29 @@ public class ModelMain {
     }
 
     // home
-    public ResultSet selectHome() {
+    public Map<String, ResultSet> selectHome(int userId) {
         PreparedStatement ps;
+        Map<String, ResultSet> map = new HashMap<>();
         ResultSet rs = null;
         String sql;
 
-        sql = "select * from user";
-        try {
-            ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            rs = ps.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        rs = selectDiary(userId, true);
+        map.put("diary", rs);
+        rs = selectGuestBook(userId, true);
+        map.put("guestBook", rs);
 
-        return rs;
+        return map;
     }
 
     // diary
-    public ResultSet selectDiary(int id) {
+    public ResultSet selectDiary(int id, boolean limit) {
+        String lim = limit ? "limit 5" : "";
+
         PreparedStatement ps;
         ResultSet rs = null;
         String sql;
 
-        sql = "select * from diary where user_id = ? order by create_at desc";
+        sql = "select * from diary where user_id = ? order by create_at desc " + lim;
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -69,12 +71,14 @@ public class ModelMain {
     }
 
     // guest book
-    public ResultSet selectGuestBook(int userId) {
+    public ResultSet selectGuestBook(int userId, boolean limit) {
+        String lim = limit ? "limit 5" : "";
+
         PreparedStatement ps;
         ResultSet rs = null;
         String sql;
 
-        sql = "select * from guest_book where user_id = ? order by create_at desc";
+        sql = "select * from guest_book where user_id = ? order by create_at desc " + lim;
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, userId);

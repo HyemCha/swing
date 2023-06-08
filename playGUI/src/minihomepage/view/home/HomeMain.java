@@ -1,7 +1,11 @@
 package minihomepage.view.home;
 
+import minihomepage.model.dao.Diary;
+import minihomepage.model.dao.GuestBook;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class HomeMain extends JPanel {
     HomeTable diary, guestBook;
@@ -19,4 +23,8 @@ public class HomeMain extends JPanel {
         add(guestBook, BorderLayout.EAST);
     }
 
+    public void initHome(List<Diary> diaryList, List<GuestBook> guestBookList) {
+        diary.initComponents(diaryList);
+        guestBook.initComponents(guestBookList);
+    }
 }
