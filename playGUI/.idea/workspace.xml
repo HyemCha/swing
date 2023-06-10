@@ -4,7 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b111b92-e2b5-4ba7-a575-040bbf816b4c" name="Changes" comment="" />
+    <list default="true" id="4b111b92-e2b5-4ba7-a575-040bbf816b4c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/minihomepage/controller/DiaryDetailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/minihomepage/controller/DiarySubController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/minihomepage/utility/ImageUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/form/DiaryCreate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/form/DiaryDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/minihomepage/view/guestbook/GuestBookInput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/minihomepage/view/structure/SignUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playGUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/playGUI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/2.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/MiniHomepageMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/MiniHomepageMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/controller/DiaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/controller/DiaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/controller/GuestBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/controller/GuestBookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/model/ModelMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/model/ModelMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/model/dao/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/model/dao/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/service/HomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/service/HomeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/ViewMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/ViewMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryButtons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryDatas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryDatas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/diary/ImageRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/ImageRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/diary/TextSamplerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/TextSamplerDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/guestbook/GuestBookList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/guestbook/GuestBookList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/guestbook/GuestBookMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/guestbook/GuestBookMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/home/HomeMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/home/HomeMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/home/HomeTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/home/HomeTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/structure/Categories.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/structure/Categories.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfileButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfileButtons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfileImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfileImage.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,32 +65,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "database.data.extractors.current.export.id": "CSV-Groovy.csv.groovy",
-    "database.data.extractors.current.id": "CSV-Groovy.csv.groovy",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/chm61/My/coding/swing/playGUI",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;CSV-Groovy.csv.groovy&quot;,
+    &quot;database.data.extractors.current.id&quot;: &quot;CSV-Groovy.csv.groovy&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-j-8.0.32.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\chm61\My\coding\swing\playGUI\image\minihomepage" />
@@ -79,7 +116,7 @@
       <module name="playGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="minihomepage.view.diary.*" />
+          <option name="PATTERN" value="minihomepage.view.diary.form.DiaryCreate" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,7 +142,7 @@
       <module name="playGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="minihomepage.view.diary.*" />
+          <option name="PATTERN" value="minihomepage.view.diary.form.DiaryCreate" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,8 +153,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MiniHomepageMain" />
-        <item itemvalue="Application.MarioList" />
         <item itemvalue="Application.TextSamplerDemo" />
+        <item itemvalue="Application.MarioList" />
         <item itemvalue="Application.HelloSwing" />
       </list>
     </recent_temporary>
@@ -155,6 +192,8 @@
       <workItem from="1686154031765" duration="519000" />
       <workItem from="1686154574729" duration="356000" />
       <workItem from="1686155019566" duration="438000" />
+      <workItem from="1686305642925" duration="25347000" />
+      <workItem from="1686370410161" duration="48287000" />
     </task>
     <servers />
   </component>

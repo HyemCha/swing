@@ -5,7 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ViewProfileImage extends JPanel {
-    private Image image;
+    public Image image;
+    public JLabel imgLabel;
 
     public ViewProfileImage() {
         setPreferredSize(new Dimension(100, 100));
@@ -14,6 +15,7 @@ public class ViewProfileImage extends JPanel {
         setSize(new Dimension(image.getWidth(null), image.getHeight(null)));
         setPreferredSize(new Dimension(180, 210));
         setLayout(null);
+
     }
 
     @Override
@@ -22,8 +24,10 @@ public class ViewProfileImage extends JPanel {
         g.drawImage(image, 0, 0, this.getWidth(), this.getHeight(), this);
     }
 
-    // 사용자 프로필 사진 가져오는 메서드
-    void getUserImage() {
 
+    // 사용자 프로필 사진 가져오는 메서드
+    public void getUserImage(String path) {
+        image =  new ImageIcon(path).getImage();
+        revalidate();
     }
 }

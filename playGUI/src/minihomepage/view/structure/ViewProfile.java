@@ -1,5 +1,7 @@
 package minihomepage.view.structure;
 
+import minihomepage.model.dao.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -20,7 +22,7 @@ public class ViewProfile extends JPanel {
     }
 
     public ViewProfile() {
-//        setLayout(new FlowLayout());
+        setLayout(new FlowLayout());
         setBorder(BorderFactory.createTitledBorder(userName));
         setPreferredSize(new Dimension(200, 100));
 
@@ -28,9 +30,11 @@ public class ViewProfile extends JPanel {
         add(profileImage);
 
         description = new JLabel("user description");
+        description.setPreferredSize(new Dimension(180, 60));
         add(description);
 
         buttons = new ViewProfileButtons();
+        buttons.setPreferredSize(new Dimension(180, 140));
         add(buttons, BorderLayout.SOUTH);
     }
 
@@ -51,8 +55,9 @@ public class ViewProfile extends JPanel {
         description.setText("로그인 plz~🙏");
     }
 
-    public void logIn() {
+    public void logIn(String nickname) {
         buttons.logedIn();
+        setBorder(BorderFactory.createTitledBorder(nickname));
     }
 
     public void addActionListener(ActionListener listener) {

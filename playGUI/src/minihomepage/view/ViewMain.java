@@ -1,5 +1,8 @@
 package minihomepage.view;
 
+import minihomepage.controller.DiaryController;
+import minihomepage.controller.HomeController;
+import minihomepage.controller.ProfileController;
 import minihomepage.view.structure.Categories;
 import minihomepage.view.structure.ViewProfile;
 

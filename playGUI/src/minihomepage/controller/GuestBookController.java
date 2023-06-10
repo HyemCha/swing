@@ -6,24 +6,32 @@ import minihomepage.model.dao.User;
 import minihomepage.view.ViewMain;
 import minihomepage.view.guestbook.GuestBookMain;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-public class GuestBookController {
-    public User user;
+public class GuestBookController implements ActionListener, MouseListener {
+    public User user, host;
     public ResultSet rs = null;
     ModelMain model;
     private Vector<GuestBook> guestBookList = new Vector<>();
     private GuestBook guestBook;
     public GuestBookMain guestBookMain;
+    String cmd;
+    String content;
 
-    public GuestBookController(ModelMain model, User user, ViewMain view) {
-        this.model = model;
-        this.user = user;
-        this.guestBookMain = view.tabbedPane.guestBook;
+    public GuestBookController(ProfileController profileController) {
+        this.model = profileController.model;
+        this.guestBookMain = profileController.view.tabbedPane.guestBook;
+        this.user = profileController.user;
+        this.host = profileController.host;
         setGuestBook();
     }
 
@@ -44,5 +52,43 @@ public class GuestBookController {
             throw new RuntimeException(e);
         }
         guestBookMain.initGuestBook(guestBookList);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        cmd = e.getActionCommand();
+        switch (cmd) {
+            case "글쓰기":{
+                content = guestBookMain.input.content.getText();
+                System.out.println("LOG::GuestBookController-62::" + content);
+
+            }
+
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }

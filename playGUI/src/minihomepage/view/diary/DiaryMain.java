@@ -1,9 +1,13 @@
 package minihomepage.view.diary;
 
+import minihomepage.controller.DiaryController;
+import minihomepage.controller.HomeController;
 import minihomepage.model.dao.Diary;
+import minihomepage.model.dao.User;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
 public class DiaryMain extends JPanel {
@@ -11,6 +15,8 @@ public class DiaryMain extends JPanel {
     public DiaryDatas dataTest;
     public DiaryButtons buttons;
     public DiaryMain() {
+        setLayout(new BorderLayout());
+
         dataTest = new DiaryDatas();
         add(dataTest);
 
@@ -20,5 +26,18 @@ public class DiaryMain extends JPanel {
 
     public void initDiaryDatas(Vector<String> title, Vector<Diary> diaryList) {
         dataTest.initComponents(title, diaryList);
+    }
+
+    public void addListener(DiaryController listener) {
+        dataTest.addListener(listener);
+        buttons.addListener(listener);
+    }
+
+    public void logIn(User user, User host) {
+        if(user.getId() == host.getId()) {
+            buttons.addBtn.setEnabled(true);
+        }else{
+            buttons.addBtn.setEnabled(false);
+        }
     }
 }

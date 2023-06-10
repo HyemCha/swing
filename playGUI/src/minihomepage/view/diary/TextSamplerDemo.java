@@ -168,7 +168,7 @@ public class TextSamplerDemo extends JPanel
 
     private JEditorPane createEditorPane() {
         JEditorPane editorPane = new JEditorPane();
-        editorPane.setEditable(false);
+        editorPane.setEditable(true);
         java.net.URL helpURL = TextSamplerDemo.class.getResource(
                 "TextSamplerDemoHelp.html");
         if (helpURL != null) {

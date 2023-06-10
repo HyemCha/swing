@@ -1,5 +1,6 @@
 package minihomepage.view.diary;
 
+import minihomepage.controller.DiaryController;
 import minihomepage.model.dao.Diary;
 
 import javax.swing.*;
@@ -13,9 +14,17 @@ import java.util.Vector;
 // 2. 어색하지만 다같이 표시
 
 public class DiaryDatas extends JScrollPane{
-    private DefaultListModel model;
-    private JList list;
-    private Map<String, ImageIcon> imageMap;
+    public DefaultListModel getModel() {
+        return model;
+    }
+
+    public void setModel(DefaultListModel model) {
+        this.model = model;
+    }
+
+    public DefaultListModel model;
+    public JList list;
+    private Map<Diary, ImageIcon> imageMap;
     public DiaryDatas() {
 
     }
@@ -25,8 +34,12 @@ public class DiaryDatas extends JScrollPane{
         System.out.println("LOG::DiaryDatas-32::" + imageMap.size());
         list = new JList<>();
         model = new DefaultListModel<>();
-        for (String t : diaryTitle) {
-            model.addElement(t);
+//        for (String t : diaryTitle) {
+//            model.addElement(t);
+//        }
+
+        for (Diary d : diaryList) {
+            model.addElement(d);
         }
 
         list.setModel(model);
@@ -36,15 +49,23 @@ public class DiaryDatas extends JScrollPane{
         getViewport().add(list);
     }
 
-    private Map<String, ImageIcon> createImageMap(Vector<Diary> diaryList) {
-        Map<String, ImageIcon> map = new HashMap<>();
+    private Map<Diary, ImageIcon> createImageMap(Vector<Diary> diaryList) {
+        Map<Diary, ImageIcon> map = new HashMap<>();
         try {
             for (Diary diary : diaryList) {
-                map.put(diary.getTitle(), new ImageIcon(diary.getImgUrl()));
+                map.put(diary, new ImageIcon(diary.getImgUrl()));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         return map;
+    }
+
+    public void addListener(DiaryController listener) {
+        list.addMouseListener(listener);
+    }
+
+    public void resetDiary() {
+
     }
 }

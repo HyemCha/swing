@@ -31,11 +31,6 @@ public class ViewProfileButtons extends JPanel {
     }
 
     public void logedOut() {
-//        removeAll();
-//        add(profileLogin);
-//        add(logIn);
-//        add(signUp);
-//        revalidate();
         profileLogin.setVisible(true);
         logIn.setVisible(true);
         signUp.setVisible(true);

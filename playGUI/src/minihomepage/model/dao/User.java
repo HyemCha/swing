@@ -5,6 +5,7 @@ public class User {
     private String email;
     private String nickname;
     private String pwd;
+    private String profileImg;
 
     public int getId() {
         return id;
@@ -36,5 +37,13 @@ public class User {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public String getProfileImg() {
+        return profileImg;
+    }
+
+    public void setProfileImg(String profileImg) {
+        this.profileImg = profileImg;
     }
 }

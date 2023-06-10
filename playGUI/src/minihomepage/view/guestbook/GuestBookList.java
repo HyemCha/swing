@@ -4,6 +4,8 @@ import minihomepage.model.dao.GuestBook;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.Vector;
 
 public class GuestBookList extends JScrollPane {
@@ -12,6 +14,7 @@ public class GuestBookList extends JScrollPane {
     private Vector<String> vector;
 
     public GuestBookList() {
+        table = new JTable();
     }
 
     public void initComponents(Vector<GuestBook> guestBookList) {
@@ -25,7 +28,7 @@ public class GuestBookList extends JScrollPane {
             }
         };
 
-        table = new JTable(model);
+        table.setModel(model);
         getViewport().add(table);
         Vector<String> v;
         for (GuestBook g : guestBookList) {
@@ -35,5 +38,9 @@ public class GuestBookList extends JScrollPane {
             v.add(g.getCreateAt()!=null?g.getCreateAt().toString():null);
             model.addRow(v);
         }
+    }
+
+    public void addMouseListener(MouseListener listener) {
+        table.addMouseListener(listener);
     }
 }

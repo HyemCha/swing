@@ -3,37 +3,46 @@ package minihomepage.controller;
 import minihomepage.model.ModelMain;
 import minihomepage.model.dao.Diary;
 import minihomepage.model.dao.User;
-import minihomepage.view.ViewMain;
+import minihomepage.view.diary.form.DiaryDetail;
+import minihomepage.view.diary.form.DiaryCreate;
 import minihomepage.view.diary.DiaryMain;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
-public class DiaryController {
+public class DiaryController implements ActionListener, MouseListener {
     ModelMain model;
     public ResultSet rs = null;
-    private User user;
+    public User user, host;
     private Diary diary;
-    private Vector<Diary> diaryList = new Vector<>();
+    public DiaryDetail diaryDetail;
+    private Vector<Diary> diaryList;
     private Vector<String> diaryTitle = new Vector<>();
-    private DiaryMain diaryMain;
+    public DiaryMain diaryMain;
+    String cmd;
+    private DiarySubController diarySubController;
+    private DiaryDetailController diaryDetailController;
 
 
-    public DiaryController(ModelMain model, User user, ViewMain view) {
-        this.model = model;
-        this.user = user;
-        this.diaryMain = view.tabbedPane.diary;
+    public DiaryController(ProfileController profileController) {
+        this.model = profileController.model;
+        this.diaryMain = profileController.view.tabbedPane.diary;
+        this.user = profileController.user;
+        this.host = profileController.host;
         setDiary();
     }
 
     public void setDiary() {
+        diaryList = new Vector<>();
         rs = model.selectDiary(user.getId(), false);
         try {
             while (rs.next()) {
-                System.out.println("LOG:DiaryController-25::title-" + rs.getString(3));
                 diary = new Diary();
                 diary.setId(rs.getInt(1));
                 diary.setUserId(rs.getInt(2));
@@ -51,4 +60,56 @@ public class DiaryController {
         diaryMain.initDiaryDatas(diaryTitle, diaryList);
     }
 
+    public void resetDiary() {
+        diaryMain.dataTest.list.setVisibleRowCount(0);
+        setDiary();
+        diaryMain.dataTest.addListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JFileChooser fileChooser;
+        cmd = e.getActionCommand();
+        switch (cmd) {
+            case "글쓰기": {
+                System.out.println("LOG::DiaryController-65::" + cmd);
+                DiaryCreate createForm = new DiaryCreate();
+                diarySubController = new DiarySubController(this, createForm, diaryDetail);
+                createForm.addListener(diarySubController);
+                break;
+            }
+
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+//        diaryMain.dataTest.
+        if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
+            System.out.println("LOG::DiaryController-86::" + (diaryMain.dataTest.list.getSelectedValue()));
+            diaryDetail = new DiaryDetail((Diary) diaryMain.dataTest.list.getSelectedValue());
+            diaryDetailController = new DiaryDetailController(this);
+            diaryDetail.addListener(diaryDetailController);
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }

@@ -13,3 +13,5 @@ insert into guest_book values(null, 1, "2hi hyemin i'm jennifer!", current_times
 select * from guest_book;
 
 show tables;
+
+ALTER TABLE user ADD profileImage varchar(255);

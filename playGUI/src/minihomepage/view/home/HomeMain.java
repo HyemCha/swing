@@ -1,30 +1,33 @@
 package minihomepage.view.home;
 
+import minihomepage.controller.HomeController;
 import minihomepage.model.dao.Diary;
 import minihomepage.model.dao.GuestBook;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class HomeMain extends JPanel {
-    HomeTable diary, guestBook;
+    HomeTable table;
     JPanel image;
     public HomeMain() {
-        setPreferredSize(new Dimension(600, 500));
-//        setBorder(BorderFactory.createTitledBorder("testtest"));
+        setLayout(new BorderLayout());
+//        setPreferredSize(new Dimension(600, 500));
+
         image = new HomeImage();
         add(image, BorderLayout.NORTH);
 
-        diary = new HomeTable("다이어리");
-        add(diary, BorderLayout.WEST);
-
-        guestBook = new HomeTable("방명록");
-        add(guestBook, BorderLayout.EAST);
+        table = new HomeTable();
+        add(table, BorderLayout.SOUTH);
     }
 
     public void initHome(List<Diary> diaryList, List<GuestBook> guestBookList) {
-        diary.initComponents(diaryList);
-        guestBook.initComponents(guestBookList);
+        table.initComponents(diaryList, guestBookList);
+    }
+
+    public void addListener(HomeController listener) {
+        table.addListener(listener);
     }
 }

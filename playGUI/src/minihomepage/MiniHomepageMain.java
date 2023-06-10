@@ -12,7 +12,6 @@ public class MiniHomepageMain {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-
                 ViewMain view = new ViewMain();
                 ModelMain model = new ModelMain();
                 HomeService service = new HomeService(model);

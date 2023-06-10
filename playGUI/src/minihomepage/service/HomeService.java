@@ -27,6 +27,7 @@ public class HomeService {
                     user.setEmail(rs.getString(2));
                     user.setNickname(rs.getString(3));
                     user.setPwd(rs.getString(4));
+                    user.setProfileImg(rs.getString(5));
                     break;
                 }
             }

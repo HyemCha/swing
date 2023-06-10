@@ -1,11 +1,12 @@
 package minihomepage.view.diary;
 
+import minihomepage.controller.DiaryController;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class DiaryButtons extends JPanel {
-
-    private JButton addBtn, editBtn;
+    public JButton addBtn;
     public DiaryButtons() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
 
@@ -15,11 +16,13 @@ public class DiaryButtons extends JPanel {
 
     void initComponents() {
         addBtn = new JButton("글쓰기");
-        editBtn = new JButton("수정하기");
     }
 
     void addComponents() {
         add(addBtn);
-        add(editBtn);
+    }
+
+    void addListener(DiaryController listener) {
+        addBtn.addActionListener(listener);
     }
 }
