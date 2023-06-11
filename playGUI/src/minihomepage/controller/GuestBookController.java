@@ -21,7 +21,7 @@ public class GuestBookController implements ActionListener, MouseListener {
     public User user, host;
     public ResultSet rs = null;
     ModelMain model;
-    private Vector<GuestBook> guestBookList = new Vector<>();
+    private Vector<GuestBook> guestBookList;
     private GuestBook guestBook;
     public GuestBookMain guestBookMain;
     String cmd;
@@ -32,10 +32,21 @@ public class GuestBookController implements ActionListener, MouseListener {
         this.guestBookMain = profileController.view.tabbedPane.guestBook;
         this.user = profileController.user;
         this.host = profileController.host;
+    }
+
+    public void logIn(User user) {
+        this.user = user;
         setGuestBook();
     }
 
+    public void logOut(User user) {
+        this.user = user;
+        guestBookMain.scroll.model.setRowCount(0);
+    }
+
     public void setGuestBook() {
+        guestBookList = new Vector<>();
+        System.out.println("LOG::" + this.getClass().getSimpleName() + "-49::" + user.getId());
         rs = model.selectGuestBook(user.getId(), false);
         try {
             while (rs.next()) {

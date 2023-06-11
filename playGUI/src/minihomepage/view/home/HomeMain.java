@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class HomeMain extends JPanel {
-    HomeTable table;
+    public HomeTable table;
     JPanel image;
     public HomeMain() {
         setLayout(new BorderLayout());

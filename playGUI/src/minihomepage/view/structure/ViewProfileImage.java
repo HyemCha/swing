@@ -30,4 +30,10 @@ public class ViewProfileImage extends JPanel {
         image =  new ImageIcon(path).getImage();
         revalidate();
     }
+
+    public void logOut() {
+        image = new ImageIcon("image/minihomepage/default.jpg").getImage();
+        revalidate();
+
+    }
 }

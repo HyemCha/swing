@@ -1,7 +1,10 @@
 package minihomepage.view.diary.form;
 
+import minihomepage.controller.DiaryController;
 import minihomepage.controller.DiaryDetailController;
 import minihomepage.controller.DiarySubController;
+import minihomepage.model.dao.Diary;
+import minihomepage.model.dao.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,9 +19,10 @@ public class DiaryCreate extends JFrame {
     public JPanel buttons;
     public JButton file, save, cancel;
     public JFileChooser fileChooser;
-    private DiarySubController controller;
+    private DiaryController controller;
 
-    public DiaryCreate() {
+    public DiaryCreate(User user, int cnt) {
+        System.out.println("LOG::" + this.getClass().getSimpleName() + "-25::" + user.getId() + "/cnt:" + cnt);
         initComponents();
     }
 
@@ -36,6 +40,7 @@ public class DiaryCreate extends JFrame {
         setBounds(0, 0, 500, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+//        setTitle(u);
 
         title = new JTextField();
         add(title, BorderLayout.NORTH);

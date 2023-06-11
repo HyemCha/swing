@@ -37,7 +37,16 @@ public class HomeController implements ActionListener, MouseListener {
         this.user = profileController.user;
         this.categories = profileController.view.tabbedPane;
         this.homeMain = profileController.view.tabbedPane.home;
+    }
+
+    public void logIn(User user) {
+        this.user = user;
         setHome();
+    }
+    public void logOut(User user) {
+        this.user = user;
+        homeMain.table.diaryModel.setRowCount(0);
+        homeMain.table.guestBookModel.setRowCount(0);
     }
 
     public void setHome() {
@@ -77,6 +86,7 @@ public class HomeController implements ActionListener, MouseListener {
         homeMain.initHome(diaryList, guestBookList);
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         cmd = e.getActionCommand();
@@ -115,4 +125,5 @@ public class HomeController implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
+
 }

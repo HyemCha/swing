@@ -53,6 +53,8 @@ public class ViewProfile extends JPanel {
     public void logOut() {
         buttons.logedOut();
         description.setText("로그인 plz~🙏");
+        setBorder(BorderFactory.createTitledBorder("user nickname"));
+        profileImage.logOut();
     }
 
     public void logIn(String nickname) {

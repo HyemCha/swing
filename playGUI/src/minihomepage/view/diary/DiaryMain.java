@@ -40,4 +40,8 @@ public class DiaryMain extends JPanel {
             buttons.addBtn.setEnabled(false);
         }
     }
+
+    public void logOut(){
+
+    }
 }

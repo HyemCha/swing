@@ -38,9 +38,11 @@ public class DiarySubController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         cmd = e.getActionCommand();
-        System.out.println("야ㅑ야야야양야ㅑ");
+        System.out.println("LOG야ㅑ야야야양야ㅑ::" + this.getClass().getSimpleName() + "-41::" + cmd);
         switch (cmd) {
             case "저장": {
+                System.out.println("LOG::" + this.getClass().getSimpleName() + "-44::" + userDao.getId());
+                diaryDao.setUserId(userDao.getId());
                 diaryDao.setTitle(diaryCreate.title.getText());
                 diaryDao.setContent(diaryCreate.textPane.getText());
                 diaryDao.setImgUrl(img);
@@ -49,6 +51,7 @@ public class DiarySubController implements ActionListener {
 
                 System.out.println("cmd::48:" + cmd);
                 diaryController.resetDiary();
+                diaryCreate.dispose();
                 break;
             }
 

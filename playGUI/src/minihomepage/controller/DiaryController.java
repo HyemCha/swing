@@ -26,6 +26,7 @@ public class DiaryController implements ActionListener, MouseListener {
     private Vector<String> diaryTitle = new Vector<>();
     public DiaryMain diaryMain;
     String cmd;
+    private DiaryCreate createForm;
     private DiarySubController diarySubController;
     private DiaryDetailController diaryDetailController;
 
@@ -35,12 +36,12 @@ public class DiaryController implements ActionListener, MouseListener {
         this.diaryMain = profileController.view.tabbedPane.diary;
         this.user = profileController.user;
         this.host = profileController.host;
-        setDiary();
     }
 
     public void setDiary() {
         diaryList = new Vector<>();
         rs = model.selectDiary(user.getId(), false);
+        System.out.println("LOG::" + this.getClass().getSimpleName() + "-44::" + user.getId());
         try {
             while (rs.next()) {
                 diary = new Diary();
@@ -66,14 +67,17 @@ public class DiaryController implements ActionListener, MouseListener {
         diaryMain.dataTest.addListener(this);
     }
 
+
+    int cnt = 0;
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFileChooser fileChooser;
         cmd = e.getActionCommand();
+
         switch (cmd) {
             case "글쓰기": {
+                cnt++;
                 System.out.println("LOG::DiaryController-65::" + cmd);
-                DiaryCreate createForm = new DiaryCreate();
+                createForm = new DiaryCreate(user, cnt);
                 diarySubController = new DiarySubController(this, createForm, diaryDetail);
                 createForm.addListener(diarySubController);
                 break;
@@ -111,5 +115,16 @@ public class DiaryController implements ActionListener, MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+
+    public void logIn(User user) {
+        this.user = user;
+        setDiary();
+    }
+
+    public void logOut(User user) {
+        this.user = user;
+        diaryMain.dataTest.list.setVisibleRowCount(0);
+        diaryMain.dataTest.model.clear();
     }
 }

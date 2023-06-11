@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 
 public class GuestBookMain extends JPanel {
-    private GuestBookList scroll;
+    public GuestBookList scroll;
     public GuestBookInput input;
     public GuestBookMain() {
         setLayout(new BorderLayout());

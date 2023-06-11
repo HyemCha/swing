@@ -15,10 +15,10 @@ import java.util.List;
 public class HomeTable extends JPanel {
     private JPanel diaryPanel, guestBookPanel;
     private JScrollPane diaryScroll, guestBookScroll;
-    private JTable diary, guestBook;
+    public JTable diary, guestBook;
     private JButton diaryMore, guestBookMore;
     Vector<String> diaryVector, guestBookVector;
-    private DefaultTableModel diaryModel, guestBookModel;
+    public DefaultTableModel diaryModel, guestBookModel;
 //    private Vector<String> diaryVector, guestBookVector;
 
     public HomeTable() {

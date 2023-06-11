@@ -5,40 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b111b92-e2b5-4ba7-a575-040bbf816b4c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/minihomepage/controller/DiaryDetailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/minihomepage/controller/DiarySubController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/minihomepage/utility/ImageUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/form/DiaryCreate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/form/DiaryDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/minihomepage/view/guestbook/GuestBookInput.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/minihomepage/view/structure/SignUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playGUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/playGUI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/2.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minihomepage/MiniHomepageMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/MiniHomepageMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/controller/DiaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/controller/DiaryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/controller/DiarySubController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/controller/DiarySubController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/controller/GuestBookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/controller/GuestBookController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/controller/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/controller/ProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/controller/ProfileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/diary/DiaryMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/diary/DiaryMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/diary/form/DiaryCreate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/diary/form/DiaryCreate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/guestbook/GuestBookList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/guestbook/GuestBookList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/guestbook/GuestBookMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/guestbook/GuestBookMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/home/HomeMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/home/HomeMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/home/HomeTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/home/HomeTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/structure/ViewProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/structure/ViewProfile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/structure/ViewProfileImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/playGUI/minihomepage/view/structure/ViewProfileImage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/minihomepage/controller/DiaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/controller/DiaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/controller/DiarySubController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/controller/DiarySubController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/minihomepage/controller/GuestBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/controller/GuestBookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/minihomepage/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/minihomepage/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minihomepage/model/ModelMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/model/ModelMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minihomepage/model/dao/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/model/dao/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minihomepage/service/HomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/service/HomeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/ViewMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/ViewMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryDatas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryDatas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/DiaryMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/diary/ImageRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/ImageRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/diary/TextSamplerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/TextSamplerDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/diary/form/DiaryCreate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/diary/form/DiaryCreate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/minihomepage/view/guestbook/GuestBookList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/guestbook/GuestBookList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/minihomepage/view/guestbook/GuestBookMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/guestbook/GuestBookMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/minihomepage/view/home/HomeMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/home/HomeMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/minihomepage/view/home/HomeTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/home/HomeTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/structure/Categories.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/structure/Categories.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfileButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfileButtons.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfileImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/minihomepage/view/structure/ViewProfileImage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,6 +186,7 @@
       <workItem from="1686155019566" duration="438000" />
       <workItem from="1686305642925" duration="25347000" />
       <workItem from="1686370410161" duration="48287000" />
+      <workItem from="1686457490646" duration="12218000" />
     </task>
     <servers />
   </component>

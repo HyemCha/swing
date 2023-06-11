@@ -20,7 +20,7 @@ public class ProfileController implements ActionListener {
     public ModelMain model;
     public ViewMain view;
     public ViewProfile profile;
-    public User user, host;
+    public User user, host, userDao;
     public DiaryController diaryController;
     public GuestBookController guestBookController;
     public HomeController homeController;
@@ -32,6 +32,14 @@ public class ProfileController implements ActionListener {
         this.service = service;
         this.view = view;
         this.profile = view.viewProfile;
+        // main 함수에서 DiaryController 객체 생성하지 않은 이유:
+        // 로그인 후 user가 누군지 알아야 하는데 main에서 diaryController객체 생성하면
+        // 로그인 하고나서 유저 객체를 보낼 수 없으므로...에..
+        // 나중에 로그인 함수 만들어서 인자로 유저 객체를 보낼까..?(이건 일단 기능 구현하고)
+        // 근데 객체를 스프링 처럼 관리하려면 main에 생성해서 관리하는 게 맞다고 봄
+        diaryController = new DiaryController(this);
+        guestBookController = new GuestBookController(this);
+        homeController = new HomeController(this);
     }
 
     @Override
@@ -40,19 +48,11 @@ public class ProfileController implements ActionListener {
         switch (cmd) {
             case "로그인" -> {
                 user = service.login(profile.getId(), profile.getPwd());
-                host = user; // 다이어리나 방명록에서 더블클릭하면 그 사람 정보로 바뀜
+                host = user; // 방명록에서 더블클릭하면 그 사람 정보로 바뀜
 
                 if (user != null) {
                     profile.setNickname(user.getNickname());
                     logIn();
-                    // main 함수에서 DiaryController 객체 생성하지 않은 이유:
-                    // 로그인 후 user가 누군지 알아야 하는데 main에서 diaryController객체 생성하면
-                    // 로그인 하고나서 유저 객체를 보낼 수 없으므로...에..
-                    // 나중에 로그인 함수 만들어서 인자로 유저 객체를 보낼까..?(이건 일단 기능 구현하고)
-                    // 근데 객체를 스프링 처럼 관리하려면 main에 생성해서 관리하는 게 맞다고 봄
-                    diaryController = new DiaryController(this);
-                    guestBookController = new GuestBookController(this);
-                    homeController = new HomeController(this);
                     view.tabbedPane.addListener(this);
                     System.out.println("imgsrd::"+user.getProfileImg());
                     view.viewProfile.profileImage.getUserImage(user.getProfileImg());
@@ -89,12 +89,12 @@ public class ProfileController implements ActionListener {
                 signUp = new SignUp(this);
             }
             case "확인" -> {
-                user = new User();
-                user.setEmail(signUp.emailTF.getText());
-                user.setNickname(signUp.nicknameTF.getText());
-                user.setPwd(signUp.pwdTF.getText());
-                user.setProfileImg(signUp.profile.getIcon() != null ? img :"image/minihomepage/default.jpg");
-                System.out.println("useruser ::" + img + "/" + user.getEmail());
+                userDao = new User();
+                userDao.setEmail(signUp.emailTF.getText());
+                userDao.setNickname(signUp.nicknameTF.getText());
+                userDao.setPwd(signUp.pwdTF.getText());
+                userDao.setProfileImg(signUp.profile.getIcon() != null ? img :"image/minihomepage/default.jpg");
+                System.out.println("useruser ::" + img + "/" + userDao.getEmail());
                 model.insertUser(user);
                 signUp.dispose();
                 JOptionPane.showMessageDialog(null, user.getNickname() + "님의 회원가입이 완료되었습니다.");
@@ -106,9 +106,16 @@ public class ProfileController implements ActionListener {
         profile.logIn(user.getNickname());
         view.tabbedPane.guestBook.checkUserAndHost(user, host);
         view.tabbedPane.diary.logIn(user, host);
+        diaryController.logIn(user);
+        guestBookController.logIn(user);
+        homeController.logIn(user);
     }
 
     private void logOut() {
         profile.logOut();
+        System.out.println("LOG::" + this.getClass().getSimpleName() + "-113::" + user);
+        homeController.logOut(user);
+        diaryController.logOut(user);
+        guestBookController.logOut(user);
     }
 }

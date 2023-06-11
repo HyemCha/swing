@@ -9,8 +9,8 @@ import java.awt.event.MouseListener;
 import java.util.Vector;
 
 public class GuestBookList extends JScrollPane {
-    private DefaultTableModel model;
-    private JTable table;
+    public DefaultTableModel model;
+    public JTable table;
     private Vector<String> vector;
 
     public GuestBookList() {
